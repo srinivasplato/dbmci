@@ -325,6 +325,7 @@ class Student_model extends CI_Model {
 
         $insert_payment=array(
                                 'receipt_id'=>getDynamicId('receipt_no','RECPT'),
+                                'manual_receipt_id'=>$this->input->post('manual_receipt_id'),
                                 'student_id'=> $stu_id,
                                 'state_id'=>$student['state_id'],
                                 'organisation_id'=>$student['organisation_id'],
@@ -367,6 +368,8 @@ class Student_model extends CI_Model {
 
     public function edit_student_payment_details($id){
 
+       // echo '<pre>';print_r($this->session->all_userdata());exit;
+
        if($this->input->post('due_amount') == 0){
             $final_settled='yes';
         }else{
@@ -381,6 +384,7 @@ class Student_model extends CI_Model {
 
         $update_payment=array(
                                 'state_id'=>$student['state_id'],
+                                'manual_receipt_id'=>$this->input->post('manual_receipt_id'),
                                 'organisation_id'=>$student['organisation_id'],
                                 'center_id'=>$student['center_id'],
                                 'course_id'=>$student['course_id'],

@@ -71,7 +71,7 @@ if (($success === true) || ($success == 1))
     //$this->db->where('id',$payment_id);
     $this->db->update('students_before_admissions',$update_array,array('id'=>$payment_id));
 
-    $ppquery="select * from students_before_admissions where id='".$payment_id."' ";
+    $ppquery="select * from tbl_students_before_admissions where id='".$payment_id."' ";
     
     $update_payment_info=array(
                         'payment_status'=>'success',

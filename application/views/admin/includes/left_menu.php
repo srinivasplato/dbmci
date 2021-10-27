@@ -108,7 +108,7 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							<?php if(!empty($roleResponsible['general_students'])){ ?>
+							<?php /*if(!empty($roleResponsible['general_students'])){ ?>
 					
 						<li class="<?php if($uri=='nonbhatia_payments') echo 'active';?>">
 							<a href="<?php echo site_url();?>admin/nonbhatia_payments">
@@ -118,7 +118,7 @@
 							</a>
 							<b class="arrow"></b>
 						</li>
-					<?php }?>
+					<?php }*/ ?>
 					
 					<?php if(!empty($roleResponsible['all_registered_students'])){ ?>
 

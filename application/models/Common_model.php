@@ -264,8 +264,8 @@ public function update_table($table_name='', $array='', $where='', $test=0)
                             'college_id'=>$payment_info['mbbs_college_id'],
 
                             'transaction_id'=>$payment_info['razorpay_payment_id'],
-                            'payment_mode_id'=>'152',
-                            'attachment_id'=>'47',
+                            'payment_mode_id'=>'51',
+                            'attachment_id'=>'5',
                             'total_fee'=>$payment_info['final_fee'],
                             'amount_paid'=>$payment_info['student_paid_amt'],
                             'amount_paid_date'=>date('Y-m-d'),
@@ -440,7 +440,7 @@ public function module_name(){
             'available_funds' => 'Available Funds',
             'transfer_funds' => 'Transfer Funds',
             'payment_approvals' => 'Payment Approvals',
-            'general_students' => 'General Students',
+           // 'general_students' => 'General Students',
             'all_registered_students' => 'All Registered Students',
             'expenses' => 'Expenses',
             'expense_approval' => 'Expense Approval',
@@ -527,13 +527,13 @@ public function get_default_responsibilities(){
                 '3' => 's',
                               
             ),            
-            'general_students' => array(
+            /*'general_students' => array(
                 '0' => 'l',
                 '1' => 'a',
                 '2' => 'e',
                 '3' => 'd'
 
-            ),
+            ),*/
             'all_registered_students' => array(
                 '0' => 'l',
                 '1' => 'a',
@@ -764,12 +764,12 @@ public function module_names(){
                 's' => 'Status',
                               
             ), 
-            'General Students' => array(
+            /*'General Students' => array(
                 'l' => 'View',
                 'a' => 'Add',
                 'e' => 'Edit',
                 'd' => 'Delete',              
-            ),
+            ),*/
             'All Registered Students' => array(
                 'l' => 'View',
                 'a' => 'Add',

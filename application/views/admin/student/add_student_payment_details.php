@@ -51,6 +51,19 @@
 											<input type="hidden" id="student_id" name="student_id" value="<?php echo $record['id']?>">
 											</div>
 									</div>
+
+									<div class="row form-group frm-btm">
+										<div class="col-lg-3 col-sm-3 col-md-3 col-xs-3">
+												<label class="input-text">Manual Receipt Id<span class="red bigger-120">*</span></label>
+											</div>
+											<div class="col-lg-1 col-xs-1 col-sm-1 col-md-1 input-text"> : </div>
+											<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 word-brk">
+											
+											<input class="form-control " placeholder="" type="text" name="manual_receipt_id" value=""  onkeyup="" required  >
+										
+											</div>
+									</div>
+
 									<div class="row form-group frm-btm">
 										<div class="col-lg-3 col-sm-3 col-md-3 col-xs-3">
 												<label class="input-text">Total Fees<span class="red bigger-120">*</span></label>

@@ -153,6 +153,17 @@
 										</select>
 										</div>
 										</div>
+
+				<div class="row form-group frm-btm">
+						<div class="col-lg-3 col-sm-3 col-md-3 col-xs-5">
+							<label class="input-text">Manual Receipt Id<span class="red bigger-120">*</span></label>
+							</div>
+							<div class="col-lg-1 col-xs-1 col-sm-1 col-md-1 input-text"> : </div>
+				<div class="col-lg-7 col-md-7 col-sm-7 col-xs-6 word-brk">
+						<input class="form-control " style="color:red" name="manual_receipt_id"  value="<?php echo $record['manual_receipt_id'];?>"  
+						<?php if($this->session->userdata('user_id') != 'SUBADM007'){?>  readonly <?php }?> >
+				 </div>
+				</div>
 									 <div class="row form-group frm-btm">
 											<div class="col-lg-3 col-sm-3 col-md-3 col-xs-5">
 												<label class="input-text">Entered date<span class="red bigger-120">*</span></label>

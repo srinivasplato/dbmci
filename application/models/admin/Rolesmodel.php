@@ -318,7 +318,7 @@ class Rolesmodel extends CI_Model
             'available_funds'=>'',
             'transfer_funds'=>'',
             'payment_approvals'=>'',
-            'general_students'=>'',
+            //'general_students'=>'',
             'all_registered_students'=>'',
             'expenses'=>'',
             'expense_approval'=>'',

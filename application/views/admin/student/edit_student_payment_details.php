@@ -52,6 +52,18 @@
 											<input class="form-control" placeholder="" type="hidden" name="student_id" value="<?php echo $record['student_id'];?>" id="student_id">
 											<input class="form-control" placeholder="" type="hidden" name="student_payment_id" value="<?php echo $student_payment_id;?>" id="student_payment_id">
 									</div>
+
+									<div class="row form-group frm-btm">
+										<div class="col-lg-3 col-sm-3 col-md-3 col-xs-3">
+												<label class="input-text">Manual Receipt Id</label>
+											</div>
+											<div class="col-lg-1 col-xs-1 col-sm-1 col-md-1 input-text"> : </div>
+											<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 word-brk">
+											
+											<input class="form-control " placeholder="" type="text" name="manual_receipt_id" value="<?php echo $record['manual_receipt_id'];?>"  onkeyup="" style="color:red"   <?php if($this->session->userdata('user_id') != 'SUBADM007'){?>  readonly <?php }?>  >
+										
+											</div>
+									</div>
 									<div class="row form-group frm-btm">
 										<div class="col-lg-3 col-sm-3 col-md-3 col-xs-3">
 												<label class="input-text">Total Fees<span class="red bigger-120">*</span></label>
@@ -59,7 +71,7 @@
 											<div class="col-lg-1 col-xs-1 col-sm-1 col-md-1 input-text"> : </div>
 											<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 word-brk">
 												<b>
-											<input class="form-control" placeholder="" type="text" name="total_fee" readonly value="<?php echo $record['total_fee'];?>" id="total_fee" onkeyup="" required>
+											<input class="form-control" placeholder="" type="text" name="total_fee"  value="<?php echo $record['total_fee'];?>" id="total_fee" onkeyup="" required <?php if($this->session->userdata('user_id') != 'SUBADM007'){?>  readonly <?php }?>>
 												</b>
 											</div>
 									</div>

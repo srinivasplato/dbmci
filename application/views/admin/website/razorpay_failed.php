@@ -18,7 +18,7 @@
         <br><br>
         <p>Razor Pay Reference ID:<b><?php echo $payment_info['receipt_id'];?></b></p>
         <br><br>
-        <a href="http://platoonline.in/admin/" class="btn btn-success"> Please try Once.  </a>
+        <a href="https://hyderabadbhatia.com/" class="btn btn-success"> Please try Once.  </a>
            
         <br><br>
         </div>

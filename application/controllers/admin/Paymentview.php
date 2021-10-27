@@ -111,7 +111,7 @@ class Paymentview extends CI_Controller {
 
 		$this->data['income']=$this->my_model->get_center_wise_income($state_id,$org_id,$center_id,$year,$month_id);
 		$this->data['expense']=$this->my_model->get_center_wise_expense($state_id,$org_id,$center_id,$year,$month_id);
-		//echo '<pre>';print_r($this->data['income']);exit;
+		//echo '<pre>';print_r($this->data['expense']);exit;
 		$this->setHeaderFooter($this->center_payment_details_Page,$this->data);
 	}
 

@@ -37,8 +37,9 @@
 				    						<div class="edu_dash_box_data">
 				    						    <p><b>Total Income</b></p>
 				    							<h3><b>
-				    					            		<?php if($income['total_amount'] != ''){
-										    					echo $income_total_amt=roundInt($income['total_amount']);
+				    					            		<?php if(!empty($income['total_amount'])){
+										    					 $income_total_amt=$income['total_amount'];
+										    					 echo number_format_in($income_total_amt);
 												    		}else{
 												    			echo $income_total_amt=0;
 												    		}
@@ -52,11 +53,9 @@
 				    					            <li><p><b>Total Income : </b><span><b>
 
 				    					            	
-				    					            		<?php if($income['total_amount'] != ''){
-										    					echo roundInt($income['total_amount']);
-												    		}else{
-												    			echo 0;
-												    		}
+				    					            		<?php 
+												    			echo number_format_in($income_total_amt);
+												    		
 												    	?>
 				    					            	</b></span></p></li>
 				    					            <!-- <li><p><b>Due Fees : </b> <span><b><?php echo $due_amount;?></b></span></p></li> -->
@@ -70,8 +69,9 @@
 				    					<div class="edu_color_boxes box_center">
 				    						<div class="edu_dash_box_data">
 				    						    <p><b>Total Expenses</b></p>
-				    							<h3><b><?php if($expense['total_amount'] != ''){
-										    					echo $expense_total_amt=roundInt($expense['total_amount']);
+				    							<h3><b><?php if(!empty($expense)){
+										    					 $expense_total_amt=$expense['total_amount'];
+										    					echo number_format_in($expense_total_amt);
 												    		}else{
 												    			echo $expense_total_amt=0;
 												    		}
@@ -84,7 +84,7 @@
 				    						</div>
 				    						<div class="edu_dash_info">
 												<ul>
-												    <li><p><b>Total Expenses : </b><span><b><?php echo roundInt($expense_total_amt);?></b></span></p></li>
+												    <li><p><b>Total Expenses : </b><span><b><?php echo number_format_in($expense_total_amt);?></b></span></p></li>
 												   <!--  <li><p><b>Due Fees : </b> <span><b><?php echo $due_amount;?></b></span></p></li> -->
 												</ul>
 						    				</div>
@@ -97,7 +97,7 @@
 			        						<div class="edu_dash_box_data">
 			        						    <p><b>Net Amount</b></p>
 			        							<h3><b><?php  $net_amt=$income_total_amt-$expense_total_amt;
-							        							echo number_format($net_amt);;
+							        							echo number_format_in($net_amt);;
 			        										
 			        										?></b></h3>
 			        						</div>
@@ -106,7 +106,7 @@
 			        						</div>
 			        						<div class="edu_dash_info">
 												<ul>
-												    <li><p><b>Total Net : </b><span><b><?php echo number_format($net_amt);?></b></span></p></li>
+												    <li><p><b>Total Net : </b><span><b><?php echo number_format_in($net_amt);?></b></span></p></li>
 												   <!--  <li><p><b>Due Fees : </b> <span><b><?php echo $due_amount;?></b></span></p></li> -->
 												</ul>
 						    				</div>

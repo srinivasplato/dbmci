@@ -8,6 +8,8 @@ class Available_funds extends CI_Controller {
 	public $payment_modes_Page='admin/available_funds/payment_modes_list';
 	public $income_items_list_Page='admin/available_funds/income_items_list';
 	public $expense_items_list_Page='admin/available_funds/expense_items_list';
+	public $transfer_funds_list_Page='admin/available_funds/transfer_funds_list';
+
 
 	public $header_page= 'admin/includes/header';
 	public $footer_Page= 'admin/includes/footer';
@@ -66,13 +68,55 @@ class Available_funds extends CI_Controller {
 		if($type == 'income'){
 		$this->data['function_type']='income_items_list';
 		$this->data['payment_modes']=$this->my_model->get_income_payment_modes_amount($attachment_id);
-			}else{
+		}else if($type == 'to_transfer_funds'){
+			$this->data['function_type']='to_transfer_funds';
+			redirect('admin/available_funds/transfer_funds_list/'.$attachment_id.'/to_transfer_funds', 'refresh');
+
+		}else if($type == 'from_transfer_funds'){
+			$this->data['function_type']='from_transfer_funds';
+			redirect('admin/available_funds/transfer_funds_list/'.$attachment_id.'/from_transfer_funds', 'refresh');
+		}else{
 		$this->data['function_type']='expense_items_list';
 		$this->data['payment_modes']=$this->my_model->get_expense_payment_modes_amount($attachment_id);
 			     }
 		$this->setHeaderFooter($this->payment_modes_Page,$this->data);
 	}
 
+	public function transfer_funds_list($attachment_id,$type){
+
+		$this->data['attachment_id']=$attachment_id;
+		$this->data['type']=$type;
+		if($type == 'to_transfer_funds'){
+		$this->data['html_data']='TO';
+			}else{
+		$this->data['html_data']='FROM';	
+			}
+
+		$this->setHeaderFooter($this->transfer_funds_list_Page,$this->data);
+
+	}
+
+	public function all_transferfunds(){
+
+		$records = $this->my_model->all_transferfunds($_POST);
+
+        $result_count=$this->my_model->all_transferfunds($_POST,1);
+
+        $json_data = array(
+
+            "draw"  => intval($_POST['draw'] ),
+
+            "iTotalRecords"  => intval($result_count ),
+
+            "iTotalDisplayRecords"  => intval($result_count ),
+
+            "recordsFiltered"  => intval(count($records) ),
+
+            "data"  => $records);  
+
+        echo json_encode($json_data);
+
+	}
 	public function income_items_list($attachment_id,$payment_mode_id){
 
 		$this->data['attachment_id']=$attachment_id;

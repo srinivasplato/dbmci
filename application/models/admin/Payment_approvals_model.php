@@ -15,23 +15,25 @@ class Payment_approvals_model extends CI_Model {
         $columns = array
         (
             0 => 'student_payment_details.receipt_id',
-            1 => 'student_payment_details.student_name',
-            2 => 'student_payment_details.mobile_number',
-            3 => 'student_payment_details.transaction_id',
-            4 => 'states.state',
-            5 => 'organisations.organisation_name',
-            6 => 'centers.center',
+            1 => 'student_payment_details.manual_receipt_id',
+            2 => 'student_payment_details.student_name',
+            3 => 'student_payment_details.mobile_number',
+            4 => 'student_payment_details.transaction_id',
+            5 => 'states.state',
+            6 => 'organisations.organisation_name',
+            7 => 'centers.center',
            
         );
         $search_1 = array
         (
              1 => 'student_payment_details.receipt_id',
-             2 => 'student_payment_details.student_name',
-             3 => 'student_payment_details.mobile_number',
-             4 => 'student_payment_details.transaction_id',
-             5 => 'states.state',
-             6 => 'organisations.organisation_name',
-             7 => 'centers.center',
+             2 => 'student_payment_details.manual_receipt_id',
+             3 => 'student_payment_details.student_name',
+             4 => 'student_payment_details.mobile_number',
+             5 => 'student_payment_details.transaction_id',
+             6 => 'states.state',
+             7 => 'organisations.organisation_name',
+             8 => 'centers.center',
              
         );        
         if(isset($pdata['search_text_1'])!="")

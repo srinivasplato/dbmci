@@ -48,7 +48,7 @@ class Student_adm extends CI_Controller {
 		$student_mobile=$this->data['record']['mobile_no'];
 		$check_student_link=$this->common_model->get_table_row('students',array('id'=>$student_mobile),array('admission_link'));
 		
-		if(!empty($check_student)){
+		if(!empty($check_student_link)){
 			$this->session->set_flashdata('error', 'Student Already Used this link !..');
 		    redirect('admin/student_adm/admission_link_step2_error_page');
 		}

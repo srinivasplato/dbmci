@@ -54,7 +54,7 @@
 
 
 				    						
-				    					<a href="<?php echo base_url();?>admin/batchs/download_batchs">
+				    					<a href="<?php echo base_url();?>admin/batchs/download_students/<?php echo $batch['id'];?>">
 				    						<div class="edu_dash_box_icon">
 				    							 
 												<i class="fa fa-arrow-down" aria-hidden="true"></i> 
@@ -77,8 +77,8 @@
 												    			echo number_format_in($batch['paid_amount']);
 												    		
 												    	?>
-				    					            		<i style="margin-left:60px" class="fa fa-arrow-down" aria-hidden="true"></i>
-				    					            	</b></span></p></li>
+				    					            		<!-- <i style="margin-left:60px" class="fa fa-arrow-down" aria-hidden="true"></i>
+				    					            	</b></span></p></li> -->
 				    					            	
 				    					             
 				    					         		
@@ -96,7 +96,7 @@
 												    		
 												    	?>
 				    					            		
-				    					            		<i style="margin-left:60px" class="fa fa-arrow-down" aria-hidden="true"></i>
+				    					            		<!-- <i style="margin-left:60px" class="fa fa-arrow-down" aria-hidden="true"></i> -->
 				    					            	</b>
 				    					            </span>
 				    					        </p>

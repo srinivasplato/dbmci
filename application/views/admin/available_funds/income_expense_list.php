@@ -89,7 +89,7 @@
 			    				</div>
 
 			    				<div class="col-xl-12 col-lg-4 col-md-4 col-sm-12 col-12">
-			    					<a href="<?php echo base_url()?>admin/available_funds/payment_modes/<?php echo $attachment_id;?>/transfer_funds">
+			    					<a href="<?php echo base_url()?>admin/available_funds/payment_modes/<?php echo $attachment_id;?>/to_transfer_funds">
 				    					<div class="edu_color_boxes box_center">
 				    						<div class="edu_dash_box_data">
 				    						    <p><b>To Transfer Funds(+)</b></p>
@@ -145,7 +145,7 @@
 			    				</div>
 
 			    				<div class="col-xl-12 col-lg-4 col-md-4 col-sm-12 col-12">
-			    					<a href="<?php echo base_url()?>admin/available_funds/payment_modes/<?php echo $attachment_id;?>/transfer_funds">
+			    					<a href="<?php echo base_url()?>admin/available_funds/payment_modes/<?php echo $attachment_id;?>/from_transfer_funds">
 				    					<div class="edu_color_boxes box_center">
 				    						<div class="edu_dash_box_data">
 				    						    <p><b>From Transfer Funds(-)</b></p>

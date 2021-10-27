@@ -48,13 +48,14 @@
               <div class="col-md-2">
                   <select name="search_on_1" id="search_on_1" class="form-control input-sm custom-input">    
 
-                      <option value="1">Reciept Id</option>             
-                      <option value="2">Student Name</option>
-                      <option value="3">Student Mobile</option>
-                      <option value="4">Transaction Id / UTR Id</option>
-                      <option value="5">State</option>
-                      <option value="6">Organisation name</option>
-                      <option value="7">Center</option>
+                      <option value="1">Reciept Id</option>
+                      <option value="2">Manual Reciept Id</option>             
+                      <option value="3">Student Name</option>
+                      <option value="4">Student Mobile</option>
+                      <option value="5">Transaction Id / UTR Id</option>
+                      <option value="6">State</option>
+                      <option value="7">Organisation name</option>
+                      <option value="8">Center</option>
                   </select>                  
               </div>
               <div class="col-md-2">
@@ -177,6 +178,10 @@
           var name = '<b style="color:red">ID:'+aData['student_dy_id'] +'</b><br><b style="color:green">Name:'+aData['student_name'] +'</b><br><b style="color:green">Mobile:'+aData['mobile_number'] +'</b>';
 
           $(nRow).find('td:eq(2)').html(name);
+
+          var receipt_ids = '<b style="color:blue">'+aData['receipt_id'] +'</b><br><b style="color:red">M/R Id<b style="color:green">:'+aData['manual_receipt_id'] +'</b>';
+
+          $(nRow).find('td:eq(3)').html(receipt_ids);
 
           var entered_by = '<b style="color:red">EnteredBy:'+aData['created_by'] +'</b><br><b style="color:blue">Emp Name:'+aData['user_name'] +'</b><br><b style="color:green">Date:'+aData['amount_paid_date'] +'</b>';
 
