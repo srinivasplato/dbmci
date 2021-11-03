@@ -40,6 +40,7 @@
 						<div class="edu_dashboard_widgets">							
 				    		<div class="row">
 				    			<?php foreach($batch_wise_students as $batch){ ?>
+				    	
 			    				<div class="col-xl-12 col-lg-4 col-md-4 col-sm-12 col-12">
 			    					
 				    					
@@ -48,10 +49,12 @@
 
 				    						<div  class="edu_dash_box_data">
 				    						    <p><b><?php echo $batch['batch_name']; ?></b></p>
+				   <a href="<?php echo base_url();?>admin/total_batches/batch_wise_students/<?php echo $batch['id'];?>">
 				    							<h3><b><?php echo $batch['students_count'];
-												    	?></b></h3>    					
+												    	?></b></h3>
+					</a>    					
 				    						</div>
-
+	
 
 				    						
 				    					<a href="<?php echo base_url();?>admin/batchs/download_students/<?php echo $batch['id'];?>">
@@ -110,6 +113,7 @@
 				    					</div>
 			    					
 			    				</div>
+			    		
 			    			<?php }?>
 			    				
 				    		</div>				    				

@@ -379,7 +379,7 @@ public function save_pdf($receipt_id,$previous_payment)
          $message="Dear $student_name, we are here to inform a change in your receipt that the receipt was wrongly generated for INR ".$previous_payment.".00, but the payment done is INR ".$amount_paid.".00 we are sending the new updated receipt link $full_path. Kindly call +919381915159 if there is any dispute in the issue,Thank You.";
             }
           //echo $message;exit;
-         SendSMS($student_mobile,$message);
+        // SendSMS($student_mobile,$message);
          }
 /** In Function Get single records for edit view purpose from select table **/
     public function get_responsibilities_user() {
