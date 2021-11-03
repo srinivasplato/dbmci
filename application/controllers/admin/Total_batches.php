@@ -4,6 +4,7 @@ class Total_batches extends CI_Controller {
 
 	
 	public $batches_list_Page='admin/total_batches/total_batches_list';
+	public $batch_students_Page='admin/total_batches/list_batch_students';
 
 	public $header_page= 'admin/includes/header';
 	public $footer_Page= 'admin/includes/footer';
@@ -30,6 +31,35 @@ class Total_batches extends CI_Controller {
 		$this->data['batch_wise_students']=$this->my_model->batch_wise_students_count();
 		$this->setHeaderFooter($this->batches_list_Page,$this->data);
 
+	}
+
+	public function batch_wise_students($batch_id){
+
+		
+		$this->data['batch_id']=$batch_id;
+		$this->data['batch_data']=$this->common_model->get_table_row('batchs',array('id'=>$batch_id),array());
+		$this->setHeaderFooter($this->batch_students_Page,$this->data);
+	}
+
+	public function all_batch_students(){
+		
+		$records = $this->my_model->all_batch_students($_POST);
+
+        $result_count=$this->my_model->all_batch_students($_POST,1);
+
+        $json_data = array(
+
+            "draw"  => intval($_POST['draw'] ),
+
+            "iTotalRecords"  => intval($result_count ),
+
+            "iTotalDisplayRecords"  => intval($result_count ),
+
+            "recordsFiltered"  => intval(count($records) ),
+
+            "data"  => $records);  
+
+        echo json_encode($json_data);
 	}
 
 

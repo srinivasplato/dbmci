@@ -139,7 +139,7 @@ class Batchs_model extends CI_Model {
     }
 
     public function students_excel_info_with_batch($batch_id){
-    $query=$this->db->query("SELECT tbl_states.state,tbl_organisations.organisation_name,tbl_centers.center,tbl_courses.course_name,tbl_batchs.batch_name,sum(amount_paid) as total_amt,tbl_students.* FROM tbl_students INNER JOIN tbl_states ON tbl_states.id=tbl_students.state_id INNER JOIN tbl_organisations ON tbl_organisations.id=tbl_students.organisation_id INNER JOIN tbl_centers ON tbl_centers.id=tbl_students.center_id
+    $query=$this->db->query("SELECT tbl_states.state,tbl_organisations.organisation_name,tbl_centers.center,tbl_courses.course_name,tbl_batchs.batch_name,(select IFNULL(sum(amount_paid),0) from tbl_student_payment_details where tbl_student_payment_details.student_id=tbl_students.id) as total_paid_amount,(select IFNULL(sum(due_amount),0) from tbl_student_payment_details where tbl_student_payment_details.student_id=tbl_students.id) as total_due_amount,tbl_students.* FROM tbl_students INNER JOIN tbl_states ON tbl_states.id=tbl_students.state_id INNER JOIN tbl_organisations ON tbl_organisations.id=tbl_students.organisation_id INNER JOIN tbl_centers ON tbl_centers.id=tbl_students.center_id
         INNER JOIN tbl_courses ON tbl_courses.id=tbl_students.course_id INNER JOIN tbl_batchs ON tbl_batchs.id=tbl_students.batch_id LEFT JOIN tbl_student_payment_details ON  tbl_student_payment_details.student_id=tbl_students.id where tbl_students.batch_id=".$batch_id." GROUP BY tbl_students.id");
         
 
