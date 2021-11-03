@@ -57,15 +57,15 @@ class Ws_model extends CI_Model
 		return $result;
 	}
 
-	public function student_change_password($student_id,$new_password){
+	public function student_change_password($student_mobile,$new_password){
 
 		$update_array=array(
 							'password'=>md5($new_password),
 							'modified_on'=> date('Y-m-d H:i:s')
 						   );
 
-		$this->db->update('students',$update_array,array('student_dynamic_id'=>$student_id));
-		$result=$this->db2->update('users',$update_array,array('student_id'=>$student_id));
+		$this->db->update('students',$update_array,array('student_mobile'=>$student_mobile));
+		$result=$this->db2->update('users',$update_array,array('mobile'=>$student_mobile));
 		return $result;
 	}
 

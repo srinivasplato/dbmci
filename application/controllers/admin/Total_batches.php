@@ -62,6 +62,12 @@ class Total_batches extends CI_Controller {
         echo json_encode($json_data);
 	}
 
+	public function download_batch_students($batch_id){
+       $query = $this->my_model->download_batch_students($batch_id);
+       //echo $query;exit;
+       $this->load->helper('csv');
+       query_to_csv($query, TRUE, "all_batch_students".'-'.date("m-d-Y H:i:s").'.csv');
+    }
 
 	/*-----------start setting header and footer --------------*/
 
