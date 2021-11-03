@@ -21,7 +21,7 @@ class Script extends CI_Controller {
 		foreach($receipts as $key=>$value){
 
 			if($key  <= 10){
-			    $this->common_model->save_pdf($receipts['receipt_id'],'');
+			    $this->common_model->save_pdf($value['receipt_id'],'');
 			  }
 		}
 

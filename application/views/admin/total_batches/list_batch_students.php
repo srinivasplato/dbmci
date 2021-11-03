@@ -36,7 +36,7 @@
               
               <div class="pull-right ">       
                 
-                <a href="<?php echo base_url();?>admin/batchs/download_students/<?php echo $batch_id;?>" class="btn btn-success btn-sm" type="button"><i class="fa fa-arrow-down fa-lg"></i> Download </a>                          
+                <a href="<?php echo base_url();?>admin/total_batches/download_batch_students/<?php echo $batch_id;?>" class="btn btn-success btn-sm" type="button"><i class="fa fa-arrow-down fa-lg"></i> Download </a>                          
                 <input type="hidden" name="hiv" id="hiv" value="0" />
                </div>
           
@@ -66,10 +66,10 @@
 
                       <option value="1">Student Mobile</option>
                       <option value="2">Student Name</option>
-                      <option value="3">Student ID</option>
+                      <!-- <option value="3">Student ID</option>
                       <option value="4">Admission No</option>
                       <option value="5">Batch</option>
-                      <option value="6">Course</option>
+                      <option value="6">Course</option> -->
 
                   </select>
                   
@@ -84,7 +84,7 @@
               </div>
               <div class="col-md-2">
               <button type="button" id="search_user" class="btn btn-info margin_search" style=""><i class="fa fa-search icon-style"></i></button>
-              <a class="btn btn-danger" style="display:none;" id="searchreset" href="<?php echo base_url('admin/student'); ?>"><li class="fa fa-minus icon-style"></li></a>
+              <a class="btn btn-danger" style="display:none;" id="searchreset" href="<?php echo base_url().'admin/total_batches/batch_wise_students/'.$batch_id ?>"><li class="fa fa-minus icon-style"></li></a>
               </div>
             </form> 
             <!-------- /Search Form ---------->
@@ -145,17 +145,19 @@
         "columns": [
             { "title": "S.No", "name":"sno", "orderable": false, "data":"sno", "width":"0%" },
             //{ "title": "Admission No", "name":"title","orderable": false, "data":"admission_no", "width":"0%" },
-            { "title": "Student ID", "name":"title","orderable": false, "data":"student_dynamic_id", "width":"0%" },
+            //{ "title": "Student ID", "name":"title","orderable": false, "data":"student_dynamic_id", "width":"0%" },
             //{ "title": "Course Name", "name":"title","orderable": false, "data":"course_name", "width":"0%" },
             //{ "title": "Batch Name", "name":"title","orderable": false, "data":"batch_name", "width":"0%" },
             { "title": "Student Name", "name":"title","orderable": false, "data":"student_name", "width":"0%" },
             { "title": "Mobile", "name":"title","orderable": false, "data":"student_mobile", "width":"0%" },
-            { "title": "Valid From", "name":"created_on","orderable": false, "data":"valid_from", "width":"0%" },
-            { "title": "Valid To", "name":"created_on","orderable": false, "data":"valid_to", "width":"0%" },
+            { "title": "Total Fee", "name":"created_on","orderable": false, "data":"total_fee", "width":"0%" },
+            { "title": "Paid Amount", "name":"created_on","orderable": false, "data":"paid_amount", "width":"0%" },
 
-            { "title": "Paid Amount", "name":"created_on","orderable": false, "data":"total_paid_amount", "width":"0%" },
+            { "title": "Discount", "name":"created_on","orderable": false, "data":"discount_fee", "width":"0%" },
 
-            { "title": "Due Amount", "name":"created_on","orderable": false, "data":"total_due_amount", "width":"0%" },
+            { "title": "Due Amount", "name":"created_on","orderable": false, "data":"due_amount", "width":"0%" },
+
+            { "title": "Due Date", "name":"created_on","orderable": false, "data":"due_date", "width":"0%" },
             
             //{ "title": "Modified Date", "name":"modified_on","orderable": false, "data":"modified_on", "width":"0%" },
             //{ "title": "Receipt Details", "name":"title","orderable": false, "data":"id", "width":"0%" },

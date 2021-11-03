@@ -244,7 +244,7 @@ class Ws extends REST_Controller {
 		$user_input = $this->client_request;
 		extract($user_input);
 
-		if(!$student_id)
+		if(!$student_mobile)
 		{
 			$response = array('status' => false, 'message' => 'Student ID is required', 'response' => '');
 			TrackResponse($user_input, $response);		
@@ -258,7 +258,7 @@ class Ws extends REST_Controller {
 			$this->response($response);
 		}
 
-		$user=$this->ws_model->student_change_password($student_id,$new_password);
+		$user=$this->ws_model->student_change_password($student_mobile,$new_password);
 	
 		if(!empty($user)){
 			

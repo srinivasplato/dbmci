@@ -76,8 +76,18 @@
 
 				    					            	
 
-				    					            	<?php 
-												    			echo number_format_in($batch['paid_amount']);
+				    					            	<?php
+$batch_id=$batch['id'];
+$query="SELECT sum(ab.due_amount) as due_amount,sum(ab.paid_amount) as paid_amount
+	 FROM (SELECT       a.id,a.student_name,a.student_mobile, MAX(b.id) AS maxB,sum(amount_paid) AS paid_amount,min(b.due_amount) as due_amount 
+	       FROM         tbl_students a
+	       LEFT JOIN   tbl_student_payment_details b ON a.id = b.student_id
+	       WHERE a.batch_id='$batch_id'
+	       GROUP BY     a.id
+	      ) ab
+      LEFT JOIN tbl_student_payment_details c ON ab.maxB = c.id ";
+     $res_due= $this->db->query($query)->row_array(); 
+												    			echo number_format_in($res_due['paid_amount']);
 												    		
 												    	?>
 				    					            		<!-- <i style="margin-left:60px" class="fa fa-arrow-down" aria-hidden="true"></i>
@@ -92,11 +102,13 @@
 				    					        <ul>
 				    					            <li style="color: red"><p><b>Due Amount : </b><span><b>
 
-				    					            	
+				    					            <?php 
 
-				    					            	<?php 
-												    			echo number_format_in($batch['due_amount']);
+//echo '<pre>';print_r($res_due);exit;
+								
+								echo number_format_in($res_due['due_amount']);
 												    		
+												    	
 												    	?>
 				    					            		
 				    					            		<!-- <i style="margin-left:60px" class="fa fa-arrow-down" aria-hidden="true"></i> -->
