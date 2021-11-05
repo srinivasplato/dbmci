@@ -96,8 +96,12 @@
 												<em>
 
 											
-											<input class="form-control" placeholder="" type="text" name="discount_fee"  id="discount_fee" onkeyup=""  <?php if($student_payment_discount_fee != '') {?> readonly value="<?php echo $student_payment_discount_fee;?>" <?php }else{?> value="" <?php } ?> >
-											
+											<!-- <input class="form-control" placeholder="" type="text" name="discount_fee"  id="discount_fee" onkeyup=""  <?php if($student_payment_discount_fee != '') {?> readonly value="<?php echo $student_payment_discount_fee;?>" <?php }else{?> value="" <?php } ?> > -->
+											<?php if($student_payment_discount_fee != '') {
+												echo $student_payment_discount_fee;
+											}else{ ?>
+<input class="form-control" placeholder="" type="text" name="discount_fee"  id="discount_fee" onkeyup=""  value="">
+											 <?php } ?>
 
 											</em>
 											</div>

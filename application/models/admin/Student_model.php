@@ -305,7 +305,7 @@ class Student_model extends CI_Model {
     return $till_now_paid_amt;
 
  }
-    public function add_student_payment_details($stu_id){
+    public function add_student_payment_details($stu_id,$discount_fee){
 
        if($this->input->post('due_date') != ''){
         $new_due_date=date("Y-m-d", strtotime($this->input->post('due_date')));
@@ -336,7 +336,7 @@ class Student_model extends CI_Model {
                                 'mobile_number'=>$student['student_mobile'],
                                 'student_dy_id'=>$student['student_dynamic_id'],
                                 'total_fee'=> $this->input->post('total_fee'),
-                                'discount_fee'=> $this->input->post('discount_fee'),
+                                'discount_fee'=> $discount_fee,
                                 'discount_scheme'=> $this->input->post('discount_scheme'),
                                 'amount_paid'=> $this->input->post('amount_paid'),
                                 'amount_paid_date'=> $this->input->post('amount_paid_date'),
@@ -393,7 +393,7 @@ class Student_model extends CI_Model {
                                 'student_name'=>$student['student_name'],
                                 'mobile_number'=>$student['student_mobile'],
                                 'total_fee'=> $this->input->post('total_fee'),
-                                'discount_fee'=> $this->input->post('discount_fee'),
+                                //'discount_fee'=> $this->input->post('discount_fee'),
                                 'discount_scheme'=> $this->input->post('discount_scheme'),
                                 'amount_paid'=> $this->input->post('amount_paid'),
                                 'amount_paid_date'=> $this->input->post('amount_paid_date'),
@@ -431,6 +431,90 @@ class Student_model extends CI_Model {
 
     public function all_students_payments($pdata, $getcount=null)
     {
+        $student_id=$pdata['student_id'];
+        $columns = array
+        (
+            0 => 'student_mobile',
+        );
+        $search_1 = array
+        (
+             1 => 'ab.student_mobile',
+            
+        );        
+        /*if(isset($pdata['search_text_1'])!="")
+        {
+            $this->db->like($search_1[$pdata['search_on_1']], $pdata['search_text_1'], $pdata['search_at_1'] );
+        }*/
+        if($getcount)
+        {
+           // return $this->db->select('student_payment_details.id')->from('student_payment_details')->join('students','students.id=student_payment_details.student_id','left')->where('student_payment_details.student_id',$pdata['student_id'])->order_by('student_payment_details.id','asc')->get()->num_rows();
+
+            return $this->db->query("SELECT ab.id,ab.minB as student_payment_id,
+        c.student_id,ab.student_name,ab.student_mobile,ab.student_alt_mobile,c.total_fee,c.due_date,ab.paid_amount,ab.due_amount,c.discount_fee,ab.joining_date,ab.remarks,ab.status
+        
+     FROM (SELECT       a.id,a.student_name,a.student_mobile,a.student_alt_mobile,a.remarks,a.status, MIN(b.id) AS minB,sum(amount_paid) AS paid_amount,min(b.due_amount) as due_amount,min(b.created_on) as joining_date
+           FROM         tbl_students a
+           LEFT JOIN   tbl_student_payment_details b ON a.id = b.student_id
+           WHERE a.id='$student_id'
+           GROUP BY     a.id
+          ) ab
+      LEFT JOIN tbl_student_payment_details c ON ab.minB = c.id")->num_rows();
+
+        }
+        else
+        {
+        //$this->db->select('student_payment_details.*,students.student_dynamic_id,students.student_mobile')->from('student_payment_details')->join('students','students.id=student_payment_details.student_id','left')->where('student_payment_details.student_id',$pdata['student_id'])->order_by('student_payment_details.id','asc');
+        //echo $this->db->last_query();exit;
+
+            $query="SELECT ab.id,ab.minB as student_payment_id,
+        c.student_id,ab.student_name,ab.student_mobile,ab.student_alt_mobile,c.total_fee,c.due_date,ab.paid_amount,ab.due_amount,c.discount_fee,ab.joining_date,ab.remarks,ab.status
+        
+     FROM (SELECT       a.id,a.student_name,a.student_mobile,a.student_alt_mobile,a.remarks,a.status, MIN(b.id) AS minB,sum(amount_paid) AS paid_amount,min(b.due_amount) as due_amount,min(b.created_on) as joining_date
+           FROM         tbl_students a
+           LEFT JOIN   tbl_student_payment_details b ON a.id = b.student_id
+           WHERE a.id='$student_id'
+           GROUP BY     a.id
+          ) ab
+      LEFT JOIN tbl_student_payment_details c ON ab.minB = c.id";
+        }
+        if(isset($pdata['search_text_1'])!="")
+        {
+            
+            $search_on_1=$search_1[$pdata['search_on_1']];
+            $search_text_1=$pdata['search_text_1'];
+            $query .=" WHERE $search_on_1= '$search_text_1' ";
+            //$this->db->like($search_1[$pdata['search_on_1']], $pdata['search_text_1'], $pdata['search_at_1'] );
+        }
+        if(isset($pdata['length']))
+        {
+            $perpage = $pdata['length'];
+            $limit = $pdata['start'];
+            $generatesno=$limit+1;
+            $orderby_field = $columns[$pdata['order'][0]['column'] ];   
+            $orderby = $pdata['order']['0']['dir'];
+            //$this->db->order_by($orderby_field,$orderby);
+            //$this->db->limit($perpage,$limit);
+            $query .= " ORDER BY $orderby_field $orderby";
+
+            $query .= " LIMIT $limit,$perpage";
+        }
+        else
+        {
+            $generatesno = 0;
+        }
+        $result = $this->db->query($query)->result_array();       
+       // echo $this->db->last_query();exit;
+        foreach($result as $key=>$values)
+        {
+            $result[$key]['sno'] = $generatesno++;           
+           
+        }
+        return $result;
+    }   
+
+     public function all_student_receipts($pdata, $getcount=null)
+    {
+       // $student_id=$pdata['student_id'];
         $columns = array
         (
             0 => 'receipt_id',
@@ -447,12 +531,18 @@ class Student_model extends CI_Model {
         if($getcount)
         {
             return $this->db->select('student_payment_details.id')->from('student_payment_details')->join('students','students.id=student_payment_details.student_id','left')->where('student_payment_details.student_id',$pdata['student_id'])->order_by('student_payment_details.id','asc')->get()->num_rows();
+
+            
+
         }
         else
         {
         $this->db->select('student_payment_details.*,students.student_dynamic_id,students.student_mobile')->from('student_payment_details')->join('students','students.id=student_payment_details.student_id','left')->where('student_payment_details.student_id',$pdata['student_id'])->order_by('student_payment_details.id','asc');
         //echo $this->db->last_query();exit;
+
+           
         }
+        
         if(isset($pdata['length']))
         {
             $perpage = $pdata['length'];
@@ -462,6 +552,9 @@ class Student_model extends CI_Model {
             $orderby = $pdata['order']['0']['dir'];
             $this->db->order_by($orderby_field,$orderby);
             $this->db->limit($perpage,$limit);
+            //$query .= " ORDER BY $orderby_field $orderby";
+
+            //$query .= " LIMIT $limit,$perpage";
         }
         else
         {

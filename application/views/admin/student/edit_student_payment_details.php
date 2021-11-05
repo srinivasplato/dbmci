@@ -94,7 +94,7 @@
 											</div>
 											<div class="col-lg-1 col-xs-1 col-sm-1 col-md-1 input-text"> : </div>
 											<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 word-brk">
-												<em>
+										<em>
 											<input class="form-control" placeholder="" type="text" name="discount_fee" readonly  value="<?php echo $record['discount_fee'];?>" id="discount_fee" onkeyup="" required>
 										</em>
 											</div>
