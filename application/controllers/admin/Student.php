@@ -13,6 +13,7 @@ class Student extends CI_Controller {
 	public $student_payments_list='admin/student/list_student_payments';
 	public $edit_student_payment_details='admin/student/edit_student_payment_details';
 	public $payment_pdf = 'admin/student/payment_pdf';
+	public $student_reciept_list='admin/student/list_student_receipts';
 
 	public $states_list_Page = 'admin/student/list_states';
 	public $organisations_list_Page ='admin/student/list_organisations';
@@ -379,13 +380,14 @@ class Student extends CI_Controller {
 		 	if(!empty($check_student_payment)){
 			 	if($total_paying_amt <= $student_payment_total_fee){
 
-			 		$insert_id=$this->my_model->add_student_payment_details($id);
+			 		$insert_id=$this->my_model->add_student_payment_details($id,'0');
 			 	}else{
 			 		$this->session->set_flashdata('error', 'Record added Failed Your Paying is crossed to total fee!.');
 					redirect('admin/student/add_payment_details/'.$id, 'refresh');	
 			 	}
 		 	}else{
-		 		$insert_id=$this->my_model->add_student_payment_details($id);
+		 		$discount_fee=$this->input->post('discount_fee');
+		 		$insert_id=$this->my_model->add_student_payment_details($id,$discount_fee);
 		 	}
 
 		 	
@@ -616,6 +618,35 @@ class Student extends CI_Controller {
 	   $this->data['param']=$param;
 	   $this->data['student_data']=$this->common_model->get_table_row('students',array('id'=> $student_id),array('student_mobile'));
        $this->setHeaderFooter($this->student_payments_list,$this->data);
+	}
+
+	public function student_receipt_details($student_id){
+
+	   $this->data['student_id']=$student_id;
+	   //$this->data['param']=$param;
+	   $this->data['student_data']=$this->common_model->get_table_row('students',array('id'=> $student_id),array('id,student_mobile,student_name'));
+       $this->setHeaderFooter($this->student_reciept_list,$this->data);
+	}
+
+	public function all_student_receipts(){
+
+        $records = $this->my_model->all_student_receipts($_POST);
+
+        $result_count=$this->my_model->all_student_receipts($_POST,1);
+
+        $json_data = array(
+
+            "draw"  => intval($_POST['draw'] ),
+
+            "iTotalRecords"  => intval($result_count ),
+
+            "iTotalDisplayRecords"  => intval($result_count ),
+
+            "recordsFiltered"  => intval(count($records) ),
+
+            "data"  => $records);  
+
+        echo json_encode($json_data);
 	}
 
 

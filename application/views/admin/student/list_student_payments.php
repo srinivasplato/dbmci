@@ -17,7 +17,7 @@
               </li>
 
               
-              <li class="active">Students Payments</li>
+              <li class="active">Students Payments Details</li>
             </ul><!-- /.breadcrumb -->
 
             
@@ -27,7 +27,7 @@
   <div class="page-header-1">
               <h1 class="col-lg-3 col-sm-4 col-md-5 col-xs-7 mbl-mgbtm-5 pdg-top-10">
                 <i class="menu-icon blue fa fa-cart-arrow-down"></i>  
-                Students Payments
+                Students Payment Details
               </h1>
                 <div class="pull-right ">    
                 <?php if($param == 'my_admission'){?>   
@@ -65,7 +65,7 @@
               <div class="col-md-2">
                   <select name="search_on_1" id="search_on_1" class="form-control input-sm custom-input">
 
-                      <option value="1">Reciept ID</option>
+                      <option value="1">Student Mobile</option>
                     
 
                   </select>
@@ -140,25 +140,31 @@
         "columns": [
             { "title": "S.No", "name":"sno", "orderable": false, "data":"sno", "width":"0%" },
            
-            { "title": "Student ID", "name":"title","orderable": false, "data":"student_dynamic_id", "width":"0%" },
+            { "title": "Student Name", "name":"title","orderable": false, "data":"student_name", "width":"0%" },
             { "title": "Student Mobile", "name":"title","orderable": false, "data":"student_mobile", "width":"0%" },
-            { "title": "Reciept ID", "name":"title","orderable": false, "data":"receipt_id", "width":"0%" },
-            { "title": "Final Fees", "name":"title","orderable": false, "data":"total_fee", "width":"0%" },
-            { "title": "Amount paid", "name":"title","orderable": false, "data":"amount_paid", "width":"0%" },
-            { "title": "Amount paid Date", "name":"title","orderable": false, "data":"amount_paid_date", "width":"0%" },
+            { "title": "Alternate Mobile", "name":"title","orderable": false, "data":"student_alt_mobile", "width":"0%" },
+
+            { "title": "Joining Date&Time", "name":"title","orderable": false, "data":"joining_date", "width":"0%" },
+            { "title": "Batch Fee", "name":"title","orderable": false, "data":"total_fee", "width":"0%" },
+            { "title": "Paid Amount", "name":"paid_amount","orderable": false, "data":"paid_amount", "width":"0%" },
+
+            { "title": "Discount", "name":"title","orderable": false, "data":"discount_fee", "width":"0%" },
             { "title": "Due Fees", "name":"created_on","orderable": false, "data":"due_amount", "width":"0%" },
             { "title": "Due date", "name":"created_on","orderable": false, "data":"due_date", "width":"0%" },
-            { "title": "Final Setteled", "name":"created_on","orderable": false, "data":"final_settled", "width":"0%" },
-            { "title": "Created On", "name":"title","orderable": false, "data":"created_on", "width":"0%" },
-            { "title": "Reciept View", "name":"college_name","orderable": false, "data":"id", "width":"0%" },
-            
-            { "title": "Approval Status", "name":"action", "orderable": false, "deafultContent":"", "data": "id", "width":"0%", "class":"td_action"},
+            { "title": "Status", "name":"title","orderable": false, "data":"status", "width":"0%" },
 
-            <?php if( !empty($roleResponsible['student_payments'])){
+            { "title": "Remarks", "name":"remarks","orderable": false, "data":"remarks", "width":"0%" },
+            { "title": "Details", "name":"college_name","orderable": false, "data":"id", "width":"0%" },
+
+            
+            
+            //{ "title": "Approval Status", "name":"action", "orderable": false, "deafultContent":"", "data": "id", "width":"0%", "class":"td_action"},
+
+            <?php /*if( !empty($roleResponsible['student_payments'])){
              if( in_array('e',$roleResponsible['student_payments'])){?>
 
             {"title": "Actions", "name":"action", "orderable": false, "deafultContent":"", "data": "id", "width":"0%", "class":"td_action"},      
-             <?php } }?> 
+             <?php } }*/ ?> 
 
               
             
@@ -174,14 +180,19 @@
 
          // $(nRow).find('td:eq(2)').html(image);
         // if(aData['receipt_pdf_path'] != ''){
-          var view = '<a target="_blank" title="Click to view" href="'+url+'admin/nonbhatia_payments/receipt_view/'+aData['id']+'" class="btn btn-primary btn-condensed">view</a>';
+         // var view = '<a target="_blank" title="Click to view" href="'+url+'admin/nonbhatia_payments/receipt_view/'+aData['id']+'" class="btn btn-primary btn-condensed">view</a>';
+
+         var remarks = '<a target="_blank" title="Click to details" href="'+url+'admin/student/student_remarks_list/'+aData['id']+'" class="btn btn-primary btn-condensed">Remarks</a>';
+          $(nRow).find('td:eq(11)').html(remarks);
+
+         var details = '<a target="_blank" title="Click to details" href="'+url+'admin/student/student_receipt_details/'+aData['id']+'" class="btn btn-primary btn-condensed">Details</a>';
 
             //}else{
          // var view = '<b>No PDF</b>'; 
            // }
-            $(nRow).find('td:eq(11)').html(view);
+            $(nRow).find('td:eq(12)').html(details);
 
-         if(aData['approval_status'] == 'Approved')
+       /*  if(aData['approval_status'] == 'Approved')
           {
             var action = '<b style="color:green">Approved</b>';
           }
@@ -191,17 +202,17 @@
           }else
           {
             var action = '<b style="color:red">Rejected</b>';
-          }
+          }*/
 
 
        
-          $(nRow).find('td:eq(12)').html(action);
+          //$(nRow).find('td:eq(12)').html(action);
       
-           <?php if( !empty($roleResponsible['student_payments'])){
+           <?php /*if( !empty($roleResponsible['student_payments'])){
              if( in_array('e',$roleResponsible['student_payments'])){?>
           var action ='<a class="btn btn-warning btn-condensed" title="edit" href="'+url+'admin/student/edit_payment_details/'+aData['id']+'"><i class="fa fa-edit"></i></a>';
           $(nRow).find('td:eq(13)').html(action);
-            <?php } }?> 
+            <?php } }*/  ?> 
 
 
 
