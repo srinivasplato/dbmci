@@ -191,9 +191,9 @@ class Ws extends REST_Controller {
 		$user_input = $this->client_request;
 		extract($user_input);
 
-		if(!$student_id)
+		if(!$student_mobile)
 		{
-			$response = array('status' => false, 'message' => 'Student ID is required', 'response' => '');
+			$response = array('status' => false, 'message' => 'Student Mobile is required', 'response' => '');
 			TrackResponse($user_input, $response);		
 			$this->response($response);
 		}
@@ -210,7 +210,7 @@ class Ws extends REST_Controller {
 			$this->response($response);
 		}
 
-		$check_password=$this->ws_model->student_check_password($student_id,$old_password);
+		$check_password=$this->ws_model->student_check_password($student_mobile,$old_password);
 
 		if(empty($check_password)){
 			$response = array('status' => true, 'message' => 'Password does not match with Old records!', 'response' => false);
@@ -218,7 +218,7 @@ class Ws extends REST_Controller {
 			$this->response($response);
 		}
 
-		$user=$this->ws_model->student_change_password($student_id,$new_password);
+		$user=$this->ws_model->student_change_password($student_mobile,$new_password);
 	
 		if(!empty($user)){
 			

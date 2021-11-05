@@ -48,10 +48,10 @@ class Ws_model extends CI_Model
 		//return $result;
 	}
 
-	public function student_check_password($student_id,$old_password){
+	public function student_check_password($student_mobile,$old_password){
 
 		$old_password1=md5($old_password);
-		$query="select student_dynamic_id from tbl_students where student_dynamic_id='".$student_id."' and password='".$old_password1."' ";
+		$query="select student_dynamic_id from tbl_students where student_mobile='".$student_mobile."' and password='".$old_password1."' ";
 		//echo $query;exit;
 		$result=$this->db->query($query)->row_array();
 		return $result;
