@@ -154,7 +154,11 @@
 
             { "title": "View", "name":"View","orderable": false, "data":"id", "width":"0%" },
 
-                
+            <?php if( !empty($roleResponsible['student_payments'])){
+             if( in_array('e',$roleResponsible['student_payments'])){?>
+
+            {"title": "Actions", "name":"action", "orderable": false, "deafultContent":"", "data": "id", "width":"0%", "class":"td_action"},      
+             <?php } } ?> 
             
         ],
         "fnCreatedRow": function(nRow, aData, iDataIndex) 
@@ -197,7 +201,11 @@
             $(nRow).find('td:eq(7)').html(view);
 
 
-
+            <?php if( !empty($roleResponsible['student_payments'])){
+             if( in_array('e',$roleResponsible['student_payments'])){?>
+          var action ='<a class="btn btn-warning btn-condensed" title="edit" href="'+url+'admin/student/edit_payment_details/'+aData['id']+'"><i class="fa fa-edit"></i></a>';
+          $(nRow).find('td:eq(8)').html(action);
+            <?php } }  ?> 
       
 
        
