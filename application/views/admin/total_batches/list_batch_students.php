@@ -143,21 +143,34 @@
             }
         },
         "columns": [
-            { "title": "S.No", "name":"sno", "orderable": false, "data":"sno", "width":"0%" },
+            { "title": "S.No", "name":"sno", "orderable": true, "data":"sno", "width":"0%" },
             //{ "title": "Admission No", "name":"title","orderable": false, "data":"admission_no", "width":"0%" },
             //{ "title": "Student ID", "name":"title","orderable": false, "data":"student_dynamic_id", "width":"0%" },
             //{ "title": "Course Name", "name":"title","orderable": false, "data":"course_name", "width":"0%" },
             //{ "title": "Batch Name", "name":"title","orderable": false, "data":"batch_name", "width":"0%" },
             { "title": "Student Name", "name":"title","orderable": false, "data":"student_name", "width":"0%" },
             { "title": "Mobile", "name":"title","orderable": false, "data":"student_mobile", "width":"0%" },
-            { "title": "Total Fee", "name":"created_on","orderable": false, "data":"total_fee", "width":"0%" },
-            { "title": "Paid Amount", "name":"created_on","orderable": false, "data":"paid_amount", "width":"0%" },
 
-            { "title": "Discount", "name":"created_on","orderable": false, "data":"discount_fee", "width":"0%" },
+            { "title": "Joining Date&Time", "name":"created_on","orderable": false, "data":"joining_date", "width":"0%" },
 
-            { "title": "Due Amount", "name":"created_on","orderable": false, "data":"due_amount", "width":"0%" },
+            { "title": "Batch Fee", "name":"created_on","orderable": true, "data":"total_fee", "width":"0%" },
+
+            { "title": "Discount", "name":"created_on","orderable": true, "data":"discount_fee", "width":"0%" },
+
+            { "title": "Total Paid Fee", "name":"created_on","orderable": true, "data":"paid_amount", "width":"0%" },
+
+            
+
+            { "title": "Due Fees", "name":"created_on","orderable": true, "data":"due_amount", "width":"0%" },
+
+            { "title": "Status", "name":"created_on","orderable": false, "data":"status", "width":"0%" },
 
             { "title": "Due Date", "name":"created_on","orderable": false, "data":"due_date", "width":"0%" },
+
+            { "title": "Remarks", "name":"created_on","orderable": false, "data":"id", "width":"0%" },
+
+            { "title": "Details", "name":"college_name","orderable": false, "data":"id", "width":"0%" },
+
             
             //{ "title": "Modified Date", "name":"modified_on","orderable": false, "data":"modified_on", "width":"0%" },
             //{ "title": "Receipt Details", "name":"title","orderable": false, "data":"id", "width":"0%" },
@@ -176,12 +189,16 @@
         "fnCreatedRow": function(nRow, aData, iDataIndex) 
         {           
 
-          var image = '<img src="'+url+aData['image_path']+'" height="100" width="150">';
-         // $(nRow).find('td:eq(2)').html(image);
+         var mobile = '<b style="color:green">Mobile:'+aData['student_mobile'] +'</b><br><b style="color:red">Alt Mobile:'+aData['student_alt_mobile'] +'</b>';
 
-         var payments = '<a title="Click to Inactive" href="'+url+'admin/student/student_payments/'+aData['id']+'/all" class="btn btn-success btn-condensed">Receipt Details</a>';
+          $(nRow).find('td:eq(2)').html(mobile);
 
-         //$(nRow).find('td:eq(9)').html(payments);
+
+          var batch_fee = '<b style="color:green">'+aData['total_fee'] +'</b>';
+
+         // $(nRow).find('td:eq(4)').html(batch_fee);
+
+        
 
           if(aData['status'] == 'Active')
           {
@@ -198,7 +215,11 @@
           
           <?php }*/ ?>
 
+          var remarks = '<a target="_blank" title="Click to details" href="'+url+'admin/student/student_remarks_list/'+aData['id']+'" class="btn btn-primary btn-condensed">Remarks</a>';
+          $(nRow).find('td:eq(10)').html(remarks);
 
+         var details = '<a target="_blank" title="Click to details" href="'+url+'admin/student/student_receipt_details/'+aData['id']+'" class="btn btn-primary btn-condensed">Details</a>';
+          $(nRow).find('td:eq(11)').html(details);
            
        
           var action ='<a class="btn btn-warning btn-condensed" title="edit" href="'+url+'admin/student/edit/'+aData['id']+'"><i class="fa fa-edit"></i></a>';
