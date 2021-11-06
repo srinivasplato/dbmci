@@ -344,7 +344,7 @@ class Student_model extends CI_Model {
                                 'payment_mode_id'=> $this->input->post('payment_mode'),
                                 'attachment_id'=>$attachment['attachment_id'],
                                 'due_amount'=> $this->input->post('due_amount'),
-                                'due_date'=> $new_due_date,
+                                
                                 'remarks'=> $this->input->post('remarks'),
                                 'final_settled'=>$final_settled,
                                 'created_on'=> date('Y-m-d H:i:s'),
@@ -358,7 +358,7 @@ class Student_model extends CI_Model {
 
         
         
-        $final_settled_ary=array('final_settled'=>$final_settled,'due_amount'=> $this->input->post('due_amount'));
+        $final_settled_ary=array('final_settled'=>$final_settled,'due_amount'=> $this->input->post('due_amount'),'due_date'=> $new_due_date);
         
         $this->db->update('student_payment_details',$final_settled_ary,array('student_id'=> $stu_id,'batch_id'=>$student['batch_id']));
         
@@ -401,7 +401,7 @@ class Student_model extends CI_Model {
                                 'payment_mode_id'=> $this->input->post('payment_mode'),
                                 'attachment_id'=>$attachment['attachment_id'],
                                 'due_amount'=> $this->input->post('due_amount'),
-                                'due_date'=> $this->input->post('due_date'),
+                                
                                 'remarks'=> $this->input->post('remarks'),
                                 'final_settled'=>$final_settled,
                                 'approval_status'=> 'Pending',
@@ -411,10 +411,13 @@ class Student_model extends CI_Model {
        // echo '<pre>';print_r($update_payment);
         $this->db->update('student_payment_details',$update_payment,array('id'=>$id));
         //echo $this->db->last_query();exit;
-        $update_final_status=array('final_settled'=>$final_settled);
+        $update_final_status=array(
+                     'final_settled'=>$final_settled,
+                    
+                     );
         $result=$this->db->update('students',$update_final_status,array('id'=> $this->input->post('student_id')));
 
-        $final_settled_ary=array('final_settled'=>$final_settled,'due_amount'=> $this->input->post('due_amount'));
+        $final_settled_ary=array('final_settled'=>$final_settled,'due_amount'=> $this->input->post('due_amount'),'due_date'=> $this->input->post('due_date'));
 
         $this->db->update('student_payment_details',$final_settled_ary,array('student_id'=> $stu_id,'batch_id'=>$student['batch_id']));
         
