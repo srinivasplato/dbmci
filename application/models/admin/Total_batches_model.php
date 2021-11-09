@@ -53,6 +53,7 @@ class Total_batches_model extends CI_Model {
             ->order_by('students.created_on','desc')->get()->num_rows();*/
 
 
+
      return $this->db->query("SELECT ab.minB,ab.batch_id, ab.id,ab.student_name,ab.student_mobile,ab.student_alt_mobile,c.total_fee,c.due_date,c.discount_fee,ab.paid_amount,ab.due_amount,c.created_on as joining_date,ab.status FROM (SELECT a.id,a.student_name,a.batch_id,a.student_mobile,a.student_alt_mobile,a.status, MIN(b.id) AS minB,sum(amount_paid) AS paid_amount,min(b.due_amount) AS due_amount 
       FROM tbl_students a 
       LEFT JOIN tbl_student_payment_details b ON a.id = b.student_id 
@@ -70,6 +71,7 @@ LEFT JOIN tbl_student_payment_details c ON ab.minB = c.id")->num_rows();
         ->join('batchs','batchs.id=students.batch_id','left')
         ->where('students.batch_id',$pdata['batch_id'])
         ->order_by('students.created_on','desc');*/
+
 
         $query="SELECT ab.minB, ab.batch_id,ab.id,ab.student_name,ab.student_mobile,ab.student_alt_mobile,c.total_fee,c.due_date,c.discount_fee,ab.paid_amount,ab.due_amount,c.created_on as joining_date,ab.status FROM (SELECT a.id,a.student_name,a.batch_id,a.student_mobile,a.student_alt_mobile,a.status, MIN(b.id) AS minB,sum(amount_paid) AS paid_amount,min(b.due_amount) AS due_amount 
       FROM tbl_students a 

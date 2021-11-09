@@ -14,6 +14,8 @@ class Student extends CI_Controller {
 	public $edit_student_payment_details='admin/student/edit_student_payment_details';
 	public $payment_pdf = 'admin/student/payment_pdf';
 	public $student_reciept_list='admin/student/list_student_receipts';
+	public $student_view_page='admin/student/student_view_page';
+	public $student_info_page='admin/student/student_info';
 
 	public $states_list_Page = 'admin/student/list_states';
 	public $organisations_list_Page ='admin/student/list_organisations';
@@ -775,6 +777,22 @@ class Student extends CI_Controller {
    			$this->db->update('students',$up_array,array('student_dynamic_id'=>$value['student_dynamic_id']));
      	}
      	echo 'done device_ids updated successfully';exit;
+     }
+
+     public function student_view($student_id){
+
+
+     	$this->data['student_info']=$this->common_model->getStudentRecord($student_id);
+		$this->setHeaderFooter($this->student_view_page,$this->data);
+		
+		
+     }
+
+     public function student_view_pages(){
+
+      $this->load->view($this->student_info_page,$this->data);
+		
+		
      }
 
 

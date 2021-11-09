@@ -8,6 +8,7 @@ class Script extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Common_model','common_model');
+		error_reporting(0);
 	
 	}
 
@@ -21,16 +22,19 @@ class Script extends CI_Controller {
 		foreach($receipts as $key=>$value){
 
 
+
 			//if($key  <= 10){
 			    $this->save_pdf($value['receipt_id'],'');
 			 // }
 
+
 		}
+
+		echo 'done';exit;
 
 		
 
 	}
-
 
 
 	public function save_pdf($receipt_id,$previous_payment){ 
@@ -78,7 +82,6 @@ class Script extends CI_Controller {
          	$res=$this->db->query($query)->row_array();
          	return $res;
          }
-
 
 
 

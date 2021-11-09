@@ -165,7 +165,7 @@ Padmarao Nagar, Secunderabad, Telangana 500025</td>
       <td height="32">&nbsp;</td>
       <td style=" font-size:15px; color:#000; padding:5px; font-family: 'Muli', sans-serif;" width="47%" height="32"><strong>
         Date : <?php echo date('d F Y'); ?></strong></td>
-      <td style=" font-size:15px; color:#000; padding:5px; font-family: 'Muli', sans-serif;" width="47%" align="right"><strong><img src="storage/sign.png" style="width: 190px;"></strong><br><span style="padding-right: 50px;">Finance Head</span></td>
+      <td style=" font-size:15px; color:#000; padding:5px; font-family: 'Muli', sans-serif;" width="47%" align="right"><strong><img src="storage/sign.jpeg" style="width: 190px;"></strong><br><span style="padding-right: 50px;">Finance Head</span></td>
       <td height="32"></td>
     </tr>
     
