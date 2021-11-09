@@ -69,6 +69,38 @@ class Total_batches extends CI_Controller {
        query_to_csv($query, TRUE, "all_batch_students".'-'.date("m-d-Y H:i:s").'.csv');
     }
 
+    public function insert_remarks(){
+
+    	//echo '<pre>';print_r($_POST);exit;
+    	$batch_id=$this->input->post('batch_id');
+    	$student_id=$this->input->post('student_id');
+
+    	$batch_data=$this->common_model->get_table_row('batchs',array('id'=>$batch_id),array());
+
+    	$remarks_data=array(
+    				'state_id'=> $batch_data['state_id'],
+    				'organisation_id'=>$batch_data['organisation_id'],
+    				'center_id'=>$batch_data['center_id'],
+    				'course_id'=>$batch_data['course_id'],
+    				'batch_id'=> $batch_id,
+    				'student_id'=>$student_id,
+    				'remarks'=>$this->input->post('remarks'),
+    				'created_by'=>$this->session->userdata('user_id'),
+    				'created_on'=>date('Y-m-d H:i:s')
+    				);
+    	//echo '<pre>';print_r($remarks_data);exit;
+    	$res=$this->db->insert('student_remarks',$remarks_data);
+
+    	if($res){
+		$this->session->set_flashdata('success', 'Record Added Successfully.');
+		
+			}else{
+		$this->session->set_flashdata('error', 'Record Added Failed!...');
+			}
+		redirect('admin/total_batches/batch_wise_students/'.$batch_id, 'refresh');
+
+
+    }
 	/*-----------start setting header and footer --------------*/
 
 	public function setHeaderFooter($view, $data)
