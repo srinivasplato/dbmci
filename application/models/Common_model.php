@@ -344,6 +344,13 @@ public function update_table($table_name='', $array='', $where='', $test=0)
             return $this->db->query($query)->row_array();
         }
 
+        public function getStudentPaymentRecord($receipt_id){
+
+            $query="SELECT stp.*,b.batch_name,c.course_name FROM tbl_student_payment_details stp INNER JOIN tbl_courses c on c.id=stp.course_id INNER JOIN tbl_batchs b on b.id=stp.batch_id where stp.receipt_id='$receipt_id' ";
+            $res=$this->db->query($query)->row_array();
+            return $res;
+         }
+
 public function save_pdf($receipt_id,$previous_payment)
          { 
             $path=''; $full_path='';
@@ -351,7 +358,10 @@ public function save_pdf($receipt_id,$previous_payment)
          //load mPDF library
          $this->load->library('M_pdf'); 
          //now pass the data//
-         $data['payment_data'] =  $this->get_table_row('student_payment_details', array('receipt_id' => $receipt_id),array());
+         $data['payment_data']= $this->getStudentPaymentRecord($receipt_id);
+         $data['student_data']['course_name']=$data['payment_data']['course_name'];
+         $data['student_data']['batch_name']=$data['payment_data']['batch_name'];
+         
         //echo '<pre>';print_r($data['payment_data']);exit;
          $html=$this->load->view('admin/paymentportal/payment_nonbhatia_pdf',$data, true); //load the pdf.php by passing our data and get all data in $html varriable.
          //echo $html;exit();

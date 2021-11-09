@@ -42,6 +42,46 @@
           
             </div><!-- /.page-header -->
 
+            <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Enter Remarks</h4>
+        </div>
+<?php 
+      $attributes = array('class' => 'form-horizontal', 'id' => 'validation');
+      echo form_open_multipart('admin/total_batches/insert_remarks', $attributes); 
+      ?>
+        <div class="modal-body">
+
+          <input type="hidden" id="student_id" name="student_id" value=""></input>
+          <input type="hidden" id="batch_id" name="batch_id" value=""></input>
+
+          <div class="form-group">
+              <label class="col-md-3 col-xs-12 control-label">Remarks</label>
+              <div class="col-md-6 col-xs-12">
+          <textarea name="remarks" value="" class="form-control" style="margin: 0px -93px 0px 0px; width: 366px; height: 147px;"></textarea>
+        </div>
+      </div>
+    </div>
+
+          <div class="form-group">
+              
+              <div class="col-md-12 col-xs-12">
+          <button type="submit" class="btn btn-primary " style="margin-left:50%;text-algin:center">Submit</button>
+        </div>
+      </div>
+    </div>
+
+        </div>
+    </from>
+      </div>
+    </div>
+  </div>
+
   <div class="row" style="margin: 36px 0 0 0;">
     <div class="col-md-12">
  
@@ -171,7 +211,8 @@
 
             { "title": "Details", "name":"college_name","orderable": false, "data":"id", "width":"0%" },
 
-            
+            { "title": "View", "name":"view","orderable": false, "data":"id", "width":"0%" },
+
             //{ "title": "Modified Date", "name":"modified_on","orderable": false, "data":"modified_on", "width":"0%" },
             //{ "title": "Receipt Details", "name":"title","orderable": false, "data":"id", "width":"0%" },
 
@@ -215,11 +256,15 @@
           
           <?php }*/ ?>
 
-          var remarks = '<a target="_blank" title="Click to details" href="'+url+'admin/student/student_remarks_list/'+aData['id']+'" class="btn btn-primary btn-condensed">Remarks</a>';
+          var remarks = '<button type="button" class="btn btn-primary" onclick="getpopup('+aData['batch_id']+','+aData['id']+')">Remarks</button>';
+
           $(nRow).find('td:eq(10)').html(remarks);
 
-         var details = '<a target="_blank" title="Click to details" href="'+url+'admin/student/student_receipt_details/'+aData['id']+'" class="btn btn-primary btn-condensed">Details</a>';
+         var details = '<a  title="Click to details" href="'+url+'admin/student/student_receipt_details/'+aData['id']+'" class="btn btn-success btn-condensed">Details</a>';
           $(nRow).find('td:eq(11)').html(details);
+
+          var view = '<a  title="Click to details" href="'+url+'admin/student/student_view/'+aData['id']+'" class="btn btn-primary btn-condensed">View</a>';
+          $(nRow).find('td:eq(12)').html(view);
            
        
           var action ='<a class="btn btn-warning btn-condensed" title="edit" href="'+url+'admin/student/edit/'+aData['id']+'"><i class="fa fa-edit"></i></a>';
@@ -275,7 +320,15 @@ function getpagenumber()
 
 
 
-   
+function getpopup(batch_id,stu_id){
+
+  //$('.modal-body').load('content.html',function(){
+        $('#batch_id').val(batch_id);
+        $('#student_id').val(stu_id);
+        $('#myModal').modal({show:true});
+   // });
+
+}
 
     
 
