@@ -21,9 +21,13 @@ class Script extends CI_Controller {
 
 		foreach($receipts as $key=>$value){
 
-			if($key  <= 10){
+
+
+			//if($key  <= 10){
 			    $this->save_pdf($value['receipt_id'],'');
-			  }
+			 // }
+
+
 		}
 
 		echo 'done';exit;
@@ -56,6 +60,7 @@ class Script extends CI_Controller {
          $this->m_pdf->pdf->WriteHTML($receipt_id.$html);
 
             //download it D save F.
+         
          $this->m_pdf->pdf->Output("./storage/paymentreceipts/".$pdfFilePath, "F");
          $path= "storage/paymentreceipts/".$pdfFilePath;
          $full_path=base_url().$path;

@@ -239,7 +239,14 @@
 
          // $(nRow).find('td:eq(4)').html(batch_fee);
 
-        
+        var paid_amount = '<b style="color:green">'+aData['paid_amount'] +'</b>';
+
+        $(nRow).find('td:eq(6)').html(paid_amount);
+
+        var due_amount = '<b style="color:red">'+aData['due_amount'] +'</b>';
+
+        $(nRow).find('td:eq(7)').html(due_amount);
+
 
           if(aData['status'] == 'Active')
           {
