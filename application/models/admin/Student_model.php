@@ -376,11 +376,17 @@ class Student_model extends CI_Model {
             $final_settled='no';
         }
         // $final_settled=$this->input->post('final_settled');
-         $stu_pay_record=$this->common_model->get_table_row('student_payment_details',array('id'=> $id),array('student_id'));
+         $stu_pay_record=$this->common_model->get_table_row('student_payment_details',array('id'=> $id),array('student_id','approval_status'));
          $stu_id=$stu_pay_record['student_id'];
          $student=$this->common_model->get_table_row('students',array('id'=> $stu_id),array('id,student_dynamic_id,state_id,organisation_id,center_id,course_id,batch_id,student_name,student_mobile'));
 
          $attachment=$this->common_model->get_table_row('payment_modes',array('id'=> $this->input->post('payment_mode')),array('id,attachment_id'));
+
+         if($stu_pay_record['total_fee'] != $this->input->post('total_fee')){
+            $approval_status=$stu_pay_record['approval_status'];
+         }else{
+            $approval_status='Pending';
+         }
 
         $update_payment=array(
                                 'state_id'=>$student['state_id'],
@@ -404,7 +410,7 @@ class Student_model extends CI_Model {
                                 
                                 'remarks'=> $this->input->post('remarks'),
                                 'final_settled'=>$final_settled,
-                                'approval_status'=> 'Pending',
+                                'approval_status'=> $approval_status,
                                 'modified_on'=> date('Y-m-d H:i:s'),
                                 'modified_by' => $this->session->userdata('user_id'),
                              );

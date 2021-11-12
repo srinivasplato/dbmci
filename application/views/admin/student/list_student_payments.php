@@ -182,10 +182,10 @@
         // if(aData['receipt_pdf_path'] != ''){
          // var view = '<a target="_blank" title="Click to view" href="'+url+'admin/nonbhatia_payments/receipt_view/'+aData['id']+'" class="btn btn-primary btn-condensed">view</a>';
 
-         var remarks = '<a target="_blank" title="Click to details" href="'+url+'admin/student/student_remarks_list/'+aData['id']+'" class="btn btn-primary btn-condensed">Remarks</a>';
+         var remarks = '<a  title="Click to details" href="'+url+'admin/student/student_remarks_list/'+aData['id']+'" class="btn btn-primary btn-condensed">Remarks</a>';
           $(nRow).find('td:eq(11)').html(remarks);
 
-         var details = '<a target="_blank" title="Click to details" href="'+url+'admin/student/student_receipt_details/'+aData['id']+'" class="btn btn-primary btn-condensed">Details</a>';
+         var details = '<a  title="Click to details" href="'+url+'admin/student/student_receipt_details/'+aData['id']+'" class="btn btn-primary btn-condensed">Details</a>';
 
             //}else{
          // var view = '<b>No PDF</b>'; 
