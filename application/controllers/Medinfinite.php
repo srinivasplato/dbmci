@@ -52,7 +52,7 @@ class Medinfinite extends CI_Controller {
 	public function checkout($user_id){
 
 	 $data['user_data']=$this->common_model->get_table_row('medinfinite_users',array('id'=>$user_id),array());
-	 
+
 	 $this->load->view('medinfinite_checkout',$data);
 	}
 
@@ -60,9 +60,37 @@ class Medinfinite extends CI_Controller {
 
 		//echo 'srinivas'.$user_id;exit;
 
-		$data['user_data']=$this->common_model->get_table_row('medinfinite_users',array('id'=>$user_id),array());
+	$data['user_data']=$this->common_model->get_table_row('medinfinite_users',array('id'=>$user_id),array());
+	$receipt_id=getDynamicId('receipt_no','RECPT');
+
+	$paid_amt=1;
+
+    $payment_insert_id=$this->payment_model->medinfiniteUpdatePaymentOrder($user_id,$receipt_id,$paid_amt);
+    if($payment_insert_id !=''){
+
+    	$razorpay_order_id=$this->payment_model->makeCurlRequest($receipt_id,$paid_amt);
+    	$this->payment_model->medinfiniteUpdateRazorPayOrderId($razorpay_order_id,$user_id);
+
+            if($razorpay_order_id !=''){
+            $data['razorpay_order_id']=$razorpay_order_id;
+            $data['total_price']=$paid_amt;
+            $data['payment_id']=$user_id;
+           
+    		$this->load->view('medinfinite_razorpay_payment',$data);
+            }else{
+            $data['payment_info']=$receipt_id;
+        	$this->load->view('medinfinite_razorpay_failed',$data);
+            }
+		}
+
 
 	}
+
+	 public function success($id){
+    	$data['payment_id']=$id;
+    	$this->load->view('medinfinite_razorpay_success',$data);
+
+    }
 
 
 

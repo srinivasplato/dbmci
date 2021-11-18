@@ -123,10 +123,11 @@
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4" style="text-align: center;">
-                <button class="signin">PAY</button>
+                <button type="submit" name="submit" value="submit" class="signin">PAY</button>
             </div>
             <div class="col-sm-4"></div>
         </div>
+    </form>
     </div>
 </body>
 

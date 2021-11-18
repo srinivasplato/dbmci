@@ -14,6 +14,19 @@ class Payment_model extends CI_Model{
 		return $post_data['row_id'];
 	}
 
+    public function medinfiniteUpdatePaymentOrder($user_id,$receipt_id,$paid_amt){
+
+        $put_data=array(
+                        'payment_status' => 'pending',
+                        'receipt_id'=>$receipt_id,
+                        'paid_amt'=>$paid_amt,
+                       );
+
+        $res=$this->db->update('medinfinite_users',$put_data,array('id'=> $user_id));
+        return $user_id;
+
+    }
+
 
 	public function makeCurlRequest($receipt_id,$total_price){
 
@@ -69,6 +82,17 @@ class Payment_model extends CI_Model{
  		$result=$this->db->update('students_before_admissions',$update_data);
  		return $result;	
  }
+
+ public function medinfiniteUpdateRazorPayOrderId($razorpay_order_id,$payment_insert_id){
+
+        $update_data=array(
+                            'razorpay_order_id'=>$razorpay_order_id,
+                            'payment_status'=>'order_created',
+                          );
+        $this->db->where('id',$payment_insert_id);
+        $result=$this->db->update('medinfinite_users',$update_data);
+        return $result; 
+    }
 
 }
 
