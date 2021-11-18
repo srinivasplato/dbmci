@@ -14,9 +14,9 @@ class Medinfinite extends CI_Controller {
 
 	public function reservation(){ 
 
-		$this->client_request = new stdClass();
-		$this->client_request = json_decode(file_get_contents('php://input', true));
-		$this->client_request = json_decode(json_encode($this->client_request), true);
+		//$this->client_request = new stdClass();
+		$this->client_request = file_get_contents('php://input', true);
+		//$this->client_request = json_decode(json_encode($this->client_request), true);
 
 
 		//
