@@ -21,10 +21,10 @@ class Medinfinite extends CI_Controller {
 		$array = json_decode(json_encode($this->client_request), true);
 		//
 
-		$user1[0]=$this->client_request;
-		$user=$user1[0];
+		//$user1[0]=$this->client_request;
+		$user=$array[0];
 		//echo '<pre>';print_r($this->client_request);
-		echo '<pre>';print_r($array[0]);
+		//echo '<pre>';print_r($array[0]);
 
 		$post_data=array(
 							'name' => $user['name'],
