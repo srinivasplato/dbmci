@@ -145,7 +145,7 @@ else
         <br><br> <h2 style="color:#0fad00">Payment Success</h2>
         <!--<img src="http://osmhotels.com//assets/check-true.jpg">-->
         <h3>Dear, <?php echo $payment_info['name'];?></h3>
-        <p style="font-size:20px;color:#5C5C5C;">Thank you for Payment with DBMCI.
+        <p style="font-size:20px;color:#5C5C5C;">Thank you for Payment with Medinfinite2.o.
         </p>
         <br><br>    
         <p>Razor Pay Order ID:<b><?php echo $_POST['razorpay_order_id'];?></b></p>
