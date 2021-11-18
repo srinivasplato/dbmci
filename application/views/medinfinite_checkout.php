@@ -108,7 +108,7 @@
                         <tr>
                             <td>Accodomination </td>
                             <td>:</td>
-                            <td><b><?php echo count($user_data['accomodation'])?></b></td>
+                            <td><b><?php echo count(json_decode($user_data['accomodation']))?></b></td>
                         </tr>
                         <tr>
                             <td>Registration Fee </td>
