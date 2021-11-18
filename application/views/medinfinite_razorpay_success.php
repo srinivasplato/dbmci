@@ -75,7 +75,7 @@ if (($success === true) || ($success == 1))
     $payment_info=$this->db->query($ppquery)->row_array();
 
 
-    /*--Start QR code-Generation--*/
+    /*--Start QR code-Generation--
     $this->load->library('ciqrcode');
     $name=$payment_info['name'];
     $email=$payment_info['email'];
@@ -95,7 +95,7 @@ if (($success === true) || ($success == 1))
 
     $up_data=array('qrcode_path'=>$payment_info['qrcode_path']);
     $result=$this->db->update('medinfinite_users',$up_data,array('id'=>$payment_id));
-    /*--End QR code-Generation--*/
+   --End QR code-Generation--*/
 
            
 
