@@ -58,6 +58,7 @@
 
 <body>
     <div class="container-fluid">
+<form id="form1" name="form1" action="<?php echo base_url()?>medinfinite/payment/<?php echo $user_data['id']?>" method="POST" enctype="multipart/form-data" >
         <div class="row">
             <div class="col-sm-3"> </div>
             <div class="col-sm-4">
@@ -67,52 +68,52 @@
                         <tr style="border: none;">
                             <td>Student&nbsp;Name</td>
                             <td>:</td>
-                            <td><b>Srinivas</b></td>
+                            <td><b><?php echo $user_data['name'] ?></b></td>
                         </tr>
                         <tr>
                             <td>Mobile&nbsp;Number</td>
                             <td>:</td>
-                            <td><b>9658745612</b></td>
+                            <td><b><?php echo $user_data['phone'] ?></b></td>
                         </tr>
                         <tr>
                             <td>College&nbsp;Name</td>
                             <td>:</td>
-                            <td><b>Medical College</b></td>
+                            <td><b><?php echo $user_data['college_name'] ?></b></td>
                         </tr>
                         <tr>
                             <td>IMA&nbsp;Member or Not </td>
                             <td>:</td>
-                            <td><b>Yes</b></td>
+                            <td><b><?php echo $user_data['ima_member'] ?></b></td>
                         </tr>
                         <tr>
                             <td>Email</td>
                             <td>:</td>
-                            <td><b>suddu@gmail.com</b></td>
+                            <td><b><?php echo $user_data['email'] ?></b></td>
                         </tr>
                         <tr>
                             <td>Member&nbsp;ID </td>
                             <td>:</td>
-                            <td><b>136589</b></td>
+                            <td><b><?php echo $user_data['member_id'] ?></b></td>
                         </tr>
                         <tr>
                             <td>Year&nbsp;Of&nbsp;Study</td>
                             <td>:</td>
-                            <td><b>4th Year</b></td>
+                            <td><b><?php echo $user_data['year_of_study'] ?></b></td>
                         </tr>
                         <tr>
                             <td>Events </td>
                             <td>:</td>
-                            <td><b>Chess,Carrom</b></td>
+                            <td><b><?php echo $user_data['event'] ?></b></td>
                         </tr>
                         <tr>
                             <td>Accodomination </td>
                             <td>:</td>
-                            <td><b>2 Day's</b></td>
+                            <td><b><?php echo count($user_data['accomodation'])?></b></td>
                         </tr>
                         <tr>
-                            <td>Food </td>
+                            <td>Registration Fee </td>
                             <td>:</td>
-                            <td><b>2 Day's</b></td>
+                            <td><b>350 /-</b></td>
                         </tr>
                     </table>
                 </div>
