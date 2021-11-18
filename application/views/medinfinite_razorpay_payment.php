@@ -1,6 +1,6 @@
 <?php 
         $user_name=$user_data['name'];
-        $user_email=$user_data['email_id'];
+        $user_email=$user_data['email'];
         $user_mobile=$user_data['phone'];
         $user_batch='Medinfinite';
         $amt=$total_price*100;
