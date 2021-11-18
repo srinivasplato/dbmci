@@ -24,7 +24,7 @@ class Medinfinite extends CI_Controller {
 		$user1[0]=$this->client_request;
 		$user=$user1[0];
 		//echo '<pre>';print_r($this->client_request);
-		//echo '<pre>';print_r($_POST);exit;
+		echo '<pre>';print_r($user);
 
 		$post_data=array(
 							'name' => $user['name'],
@@ -39,8 +39,9 @@ class Medinfinite extends CI_Controller {
 						    'accomodation'=>json_encode($user['accomodation']),
 						    'created_on'=>date('Y-m-d H:i:s')
 		                );
+		echo '<pre>';print_r($post_data);
 		$this->db->insert('medinfinite_users',$post_data);
-		//echo $this->db->last_query();exit;
+		echo $this->db->last_query();exit;
 		$insert_id=$this->db->insert_id();
 		//$response = array('status' => true, 'message' => 'User register Successfully', 'user_id'=>$insert_id);
 		echo $insert_id;
