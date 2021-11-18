@@ -49,9 +49,18 @@ class Medinfinite extends CI_Controller {
 		//redirect('medinfinite/payment/'.$insert_id, 'refresh');
 	}
 
+	public function checkout($user_id){
+
+	 $data['user_data']=$this->common_model->get_table_row('medinfinite_users',array('id'=>$user_id),array());
+	 
+	 $this->load->view('medinfinite_checkout',$data);
+	}
+
 	public function payment($user_id){
 
-		echo 'srinivas'.$user_id;exit;
+		//echo 'srinivas'.$user_id;exit;
+
+		$data['user_data']=$this->common_model->get_table_row('medinfinite_users',array('id'=>$user_id),array());
 
 	}
 
