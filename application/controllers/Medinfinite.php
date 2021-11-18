@@ -24,7 +24,7 @@ class Medinfinite extends CI_Controller {
 		$this->client_request;
 
 		//echo '<pre>';print_r($this->client_request);
-		echo '<pre>';print_r($_POST)exit;
+		echo '<pre>';print_r($_POST);exit;
 
 		$post_data=array(
 							'name' => $user['name'],
