@@ -105,9 +105,10 @@ class Medinfinite extends CI_Controller {
 	    $params['data'] = $name.'##'.$email.'##'.$mobile.'##'.$event.'##'.$college_name.'##'.$member_id.'##'.$year_of_study;
 	    $params['level'] = 'H';
 	    $params['size'] = 10;
-	    $params['savename'] = FCPATH.'storage/medinfiniteqrcodes/'.$mobile.'.png';
+	    $qr_uniqe_id=mt_rand(100000, 9999999);
+	    $params['savename'] = FCPATH.'storage/medinfiniteqrcodes/'.$qr_uniqe_id.'.png';
 	    $this->ciqrcode->generate($params);
-	    $qrcode_path='storage/medinfiniteqrcodes/'.$mobile.'.png';
+	    $qrcode_path='storage/medinfiniteqrcodes/'.$qr_uniqe_id.'.png';
 	    $payment_info['qrcode_path']=base_url().$qrcode_path;
 
 	    $up_data=array('qrcode_path'=>$payment_info['qrcode_path']);

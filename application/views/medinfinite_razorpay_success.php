@@ -159,7 +159,9 @@ else
         <p>Payment Done On:<b><?php echo $payment_info['payment_created_on'];?></b></p>
         <br><br>
         <br><br>
-        <p>QR Code Path:<b><?php echo $payment_info['qrcode_path'];?></b></p>
+        <p>QR Code:
+            <img src="<?php echo $payment_info['qrcode_path'];?>" alt="QrCode">
+        </p>
         <br><br>
         <p>Amount Paid:<b><?php echo $payment_info['paid_amt'];?> Rs/-</b></p>
 
