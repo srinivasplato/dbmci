@@ -44,9 +44,9 @@ class Medinfinite extends CI_Controller {
 		//echo $this->db->last_query();exit;
 		$insert_id=$this->db->insert_id();
 		//$response = array('status' => true, 'message' => 'User register Successfully', 'user_id'=>$insert_id);
-		//echo $insert_id;
+		echo $insert_id;
 
-		redirect('medinfinite/payment/'.$insert_id, 'refresh');
+		//redirect('medinfinite/payment/'.$insert_id, 'refresh');
 	}
 
 	public function payment($user_id){
