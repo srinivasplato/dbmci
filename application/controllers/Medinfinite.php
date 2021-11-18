@@ -8,6 +8,7 @@ class Medinfinite extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Common_model','common_model');
+		$this->load->model('admin/Payment_model','payment_model');
 		//error_reporting(0);
 	
 	}
