@@ -25,7 +25,7 @@ var options = {
     "image": "<?php echo base_url()?>/assets/images/plato100.png",
 
     "order_id": "<?php echo $order_id?>", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    "callback_url": "<?php echo base_url()?>medinfinite/payment/success/<?php echo $payment_id?>",
+    "callback_url": "<?php echo base_url()?>medinfinite/success/<?php echo $payment_id?>",
     "prefill": {
         "name": "<?php echo $user_name?>",
         "email": "<?php echo $user_email?>",
