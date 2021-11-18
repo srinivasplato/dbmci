@@ -71,7 +71,7 @@ if (($success === true) || ($success == 1))
     //$this->db->where('id',$payment_id);
     $this->db->update('medinfinite_users',$update_array,array('id'=>$payment_id));
 
-    $ppquery="select * from medinfinite_users where id='".$payment_id."' ";
+    $ppquery="select * from tbl_medinfinite_users where id='".$payment_id."' ";
     $user=$this->db->query($ppquery)->row_array();
 
     $message='success';
@@ -82,7 +82,7 @@ if (($success === true) || ($success == 1))
 }
 else
 {
-    $ppquery="select * from medinfinite_users where id='".$payment_id."' ";
+    $ppquery="select * from tbl_medinfinite_users where id='".$payment_id."' ";
     $user=$this->db->query($ppquery)->row_array();
     
 
