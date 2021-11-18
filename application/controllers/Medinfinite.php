@@ -41,7 +41,7 @@ class Medinfinite extends CI_Controller {
 		                );
 		//echo '<pre>';print_r($post_data);
 		$this->db->insert('medinfinite_users',$post_data);
-		echo $this->db->last_query();exit;
+		//echo $this->db->last_query();exit;
 		$insert_id=$this->db->insert_id();
 		//$response = array('status' => true, 'message' => 'User register Successfully', 'user_id'=>$insert_id);
 		echo $insert_id;
