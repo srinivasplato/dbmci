@@ -74,6 +74,33 @@ if (($success === true) || ($success == 1))
     $ppquery="select * from tbl_medinfinite_users where id='".$payment_id."' ";
     $payment_info=$this->db->query($ppquery)->row_array();
 
+
+    /*--Start QR code-Generation--*/
+    $this->load->library('ciqrcode');
+    $name=$payment_info['name'];
+    $email=$payment_info['email'];
+    $mobile=$payment_info['mobile'];
+    $event=$payment_info['event'];
+    $college_name=$payment_info['college_name'];
+    $member_id=$payment_info['member_id'];
+    $year_of_study=$payment_info['year_of_study'];
+
+    $params['data'] = $name.'##'.$email.'##'.$mobile.'##'.$event.'##'.$college_name.'##'.$member_id.'##'.$year_of_study;
+    $params['level'] = 'H';
+    $params['size'] = 10;
+    $params['savename'] = FCPATH.'storage/medinfiniteqrcodes/'.$data['event_unique_id'].'.png';
+    $this->ciqrcode->generate($params);
+    $qrcode_path='storage/medinfiniteqrcodes/'.$mobile.'.png';
+    $payment_info['qrcode_path']=base_url().$qrcode_path;
+
+    $up_data=array('qrcode_path'=>$payment_info['qrcode_path']);
+    $result=$this->db->update('medinfinite_users',$up_data,array('id'=>$payment_id));
+    /*--End QR code-Generation--*/
+
+           
+
+
+
     $message='success';
     
 
@@ -127,7 +154,12 @@ else
         <br><br>
         <p>Receipt ID:<b><?php echo $payment_info['receipt_id'];?></b></p>
         <br><br>
+        <p>Event:<b><?php echo $payment_info['event'];?></b></p>
+        <br><br>
         <p>Payment Done On:<b><?php echo $payment_info['payment_created_on'];?></b></p>
+        <br><br>
+        <br><br>
+        <p>QR Code Path:<b><?php echo $payment_info['qrcode_path'];?></b></p>
         <br><br>
         <p>Amount Paid:<b><?php echo $payment_info['paid_amt'];?> Rs/-</b></p>
 
