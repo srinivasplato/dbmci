@@ -47,6 +47,12 @@ class Medinfinite extends CI_Controller {
 		echo $insert_id;
 	}
 
+	public function payment($user_id){
+
+		echo $user_id;exit;
+
+	}
+
 
 
 }
