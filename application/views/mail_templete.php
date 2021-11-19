@@ -9,6 +9,10 @@
                   
                   <table width = "300" border = "0" cellspacing = "0" 
                      cellpadding = "0">
+
+                     <tr valign = "bottom">
+                        <td height = "20">Thanks for Register With Medinfinite2.o</td>
+                     </tr>
 							
                      <tr valign = "bottom">
                         <td height = "20">Name:</td>
