@@ -141,7 +141,7 @@ class Medinfinite extends CI_Controller {
 
 		$this->email->send();
 
-echo $this->email->print_debugger();exit;
+//echo $this->email->print_debugger();exit;
 
 
     	$this->load->view('medinfinite_razorpay_success',$data);
