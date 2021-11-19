@@ -188,6 +188,7 @@ else
        <!-- <a href="http://platoonline.in/payment/start_preparation" class="btn btn-success"> Start Preparation  </a>-->
        <!-- <a href="<?php echo base_url()?>/payment/start_preparation"> <button class="btn btn-success">Start Preparation</button></a> -->
         <?php }else{?>
+            
         <br><br> <h2 style="color:red">Payment Failed</h2>
         
         <h3>Dear, <?php echo $payment_info['name'];?></h3>

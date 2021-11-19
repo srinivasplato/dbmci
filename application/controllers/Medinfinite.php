@@ -95,7 +95,7 @@ class Medinfinite extends CI_Controller {
     	$data['user_data']=$payment_info;
     	$message=$this->load->view('mail_templete',$data,TRUE);
 
-    	echo '<pre>';print_r($message);exit;
+    	//echo '<pre>';print_r($message);exit;
     	/*--Start QR code-Generation--*/
 	    $this->load->library('ciqrcode');
 	    $name=$payment_info['name'];
@@ -123,12 +123,12 @@ class Medinfinite extends CI_Controller {
 
     	$this->load->library('email');
 
-		/*$config['protocol']    = 'smtp';
+		$config['protocol']    = 'smtp';
 		$config['smtp_host']    = 'ssl://smtp.gmail.com';
 		$config['smtp_port']    = '465';
 		$config['smtp_timeout'] = '7';
-		$config['smtp_user']    = 'sender_mailid@gmail.com';
-		$config['smtp_pass']    = 'password';
+		$config['smtp_user']    = 'Serverimap.gmail.com';
+		$config['smtp_pass']    = 'Plato#999';
 		$config['charset']    = 'utf-8';
 		$config['newline']    = "\r\n";
 		$config['mailtype'] = 'text'; // or html
@@ -136,13 +136,13 @@ class Medinfinite extends CI_Controller {
 
 		$this->email->initialize($config);
 
-		$this->email->from('sender_mailid@gmail.com', 'sender_name');
-		$this->email->to('recipient@gmail.com'); 
+		$this->email->from('help.medinfinite2.0@gmail.com', 'Medinfinite2');
+		$this->email->to('asrinivas433@gmail.com'); 
 		$this->email->subject('Email Test');
 		$this->email->message('Testing the email class.');  
 
 		$this->email->send();
-*/
+
 //echo $this->email->print_debugger();exit;
 
 
