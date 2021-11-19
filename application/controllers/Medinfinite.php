@@ -92,6 +92,10 @@ class Medinfinite extends CI_Controller {
 
     	$ppquery="select * from tbl_medinfinite_users where id='".$id."' ";
     	$payment_info=$this->db->query($ppquery)->row_array();
+
+    	$message=$this->load->view('mail_templete',$data,TRUE);
+
+    	echo '<pre>';print_r($message);exit;
     	/*--Start QR code-Generation--*/
 	    $this->load->library('ciqrcode');
 	    $name=$payment_info['name'];
@@ -115,13 +119,11 @@ class Medinfinite extends CI_Controller {
 	    $result=$this->db->update('medinfinite_users',$up_data,array('id'=>$id));
     	/*--End QR code-Generation--*/
 
-    	$message=$this->load->view('mail_templete');
-
-    	echo '<pre>';print_r($message);exit;
+    	
 
     	$this->load->library('email');
 
-		$config['protocol']    = 'smtp';
+		/*$config['protocol']    = 'smtp';
 		$config['smtp_host']    = 'ssl://smtp.gmail.com';
 		$config['smtp_port']    = '465';
 		$config['smtp_timeout'] = '7';
@@ -140,7 +142,7 @@ class Medinfinite extends CI_Controller {
 		$this->email->message('Testing the email class.');  
 
 		$this->email->send();
-
+*/
 //echo $this->email->print_debugger();exit;
 
 
