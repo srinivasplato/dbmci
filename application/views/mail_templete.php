@@ -15,26 +15,20 @@
                      </tr>
 							
                      <tr valign = "bottom">
-                        <td height = "20">Name:</td>
-                     </tr>
-                     
-                     <tr>
+                        <td height = "20"><b>Name:</b></td>
+                    
                         <td><?php echo $user_data['name']?></td>
                      </tr>
                      
                      <tr valign = "bottom">
-                        <td height = "20">Your Event:</td>
-                     </tr>
-                     
-                     <tr>
+                        <td height = "20"><b>Your Event:</b></td>
+                  
                         <td class = "frmtxt2"><?php echo $user_data['event']?></td>
                      </tr>
                      
                      <tr>
-                        <td height = "20" valign = "bottom">Attach File:</td>
-                     </tr>
+                        <td height = "20" valign = "bottom"><b>Whats up Group:</b></td>
                      
-                     <tr valign = "bottom">
                         <td valign = "bottom"><?php echo "https://chat.whatsapp.com/FijXpVNqsgPHUJ9ricdFoj"; ?></td>
                      </tr>
                      
