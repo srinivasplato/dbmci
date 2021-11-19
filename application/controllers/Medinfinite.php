@@ -125,8 +125,8 @@ class Medinfinite extends CI_Controller {
 
 		$config['protocol']    = 'smtp';
 		$config['smtp_host']    = 'ssl://smtp.gmail.com';
-		$config['smtp_port']    = '587';
-		//$config['smtp_timeout'] = '7';
+		$config['smtp_port']    = '465';
+		$config['smtp_timeout'] = '7';
 		$config['smtp_user']    = 'help.medinfinite2.0@gmail.com';
 		$config['smtp_pass']    = 'Plato#999';
 		$config['charset']    = 'utf-8';
@@ -143,7 +143,7 @@ class Medinfinite extends CI_Controller {
 
 		$this->email->send();
 
-//echo $this->email->print_debugger();exit;
+echo $this->email->print_debugger();exit;
 
 
     	$this->load->view('medinfinite_razorpay_success',$data);
