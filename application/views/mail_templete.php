@@ -11,21 +11,19 @@
                      cellpadding = "0">
 							
                      <tr valign = "bottom">
-                        <td height = "20">Your Name:</td>
+                        <td height = "20">Name:</td>
                      </tr>
                      
                      <tr>
-                        <td><input name = "from" type = "text" 
-                           id = "from" size = "30"></td>
+                        <td><?php echo $user_data['name']?></td>
                      </tr>
                      
                      <tr valign = "bottom">
-                        <td height = "20">Your Email Address:</td>
+                        <td height = "20">Your Event:</td>
                      </tr>
                      
                      <tr>
-                        <td class = "frmtxt2"><input name = "emaila"
-                           type = "text" id = "emaila" size = "30"></td>
+                        <td class = "frmtxt2"><?php echo $user_data['event']?></td>
                      </tr>
                      
                      <tr>
@@ -33,15 +31,12 @@
                      </tr>
                      
                      <tr valign = "bottom">
-                        <td valign = "bottom"><input name = "filea" 
-                           type = "file" id = "filea" size = "16"></td>
+                        <td valign = "bottom"><?php echo "https://chat.whatsapp.com/FijXpVNqsgPHUJ9ricdFoj"; ?></td>
                      </tr>
                      
                      <tr>
-                        <td height = "40" valign = "middle"><input 
-                           name = "Reset2" type = "reset" id = "Reset2" value = "Reset">
-                        <input name = "Submit2" type = "submit" 
-                           value = "Submit" onClick = "return CheckData45()"></td>
+                        <td height = "40" valign = "middle">Thanking You .. Medinfinite2.o
+                       </td>
                      </tr>
                   </table>
                   

@@ -92,7 +92,7 @@ class Medinfinite extends CI_Controller {
 
     	$ppquery="select * from tbl_medinfinite_users where id='".$id."' ";
     	$payment_info=$this->db->query($ppquery)->row_array();
-
+    	$data['user_data']=$payment_info;
     	$message=$this->load->view('mail_templete',$data,TRUE);
 
     	echo '<pre>';print_r($message);exit;
