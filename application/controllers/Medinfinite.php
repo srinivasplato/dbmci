@@ -121,6 +121,46 @@ class Medinfinite extends CI_Controller {
 
     	
 
+    	/*$this->load->library('email');
+
+		$config['protocol']    = 'smtp';
+		$config['smtp_host']    = 'ssl://smtp.gmail.com';
+		$config['smtp_port']    = '465';
+		$config['smtp_timeout'] = '7';
+		$config['smtp_user']    = 'help.medinfinite2.0@gmail.com';
+		$config['smtp_pass']    = 'Plato#999';
+		$config['charset']    = 'utf-8';
+		$config['newline']    = "\r\n";
+		$config['mailtype'] = 'text'; // or html
+		$config['validation'] = TRUE; // bool whether to validate email or not      
+
+		$this->email->initialize($config);
+		$this->email->set_newline("\r\n");
+
+		$this->email->from('help.medinfinite2.0@gmail.com', 'Medinfinite2');
+		$this->email->to('asrinivas433@gmail.com'); 
+		$this->email->subject('Email Test');
+		$this->email->message('Testing the email class.');  
+
+		$this->email->send();
+
+echo $this->email->print_debugger();exit;*/
+
+
+    	$this->load->view('medinfinite_razorpay_success',$data);
+
+    }
+
+
+	public function send_mail($id){
+    	$data['payment_id']=15;
+
+    	$ppquery="select * from tbl_medinfinite_users where id='".$id."' ";
+    	$payment_info=$this->db->query($ppquery)->row_array();
+    	$data['user_data']=$payment_info;
+    	$message=$this->load->view('mail_templete',$data,TRUE);
+
+
     	$this->load->library('email');
 
 		$config['protocol']    = 'smtp';
@@ -144,12 +184,10 @@ class Medinfinite extends CI_Controller {
 
 		$this->email->send();
 
-echo $this->email->print_debugger();exit;
-
-
-    	$this->load->view('medinfinite_razorpay_success',$data);
+		echo $this->email->print_debugger();exit;
 
     }
+
 
 
 
