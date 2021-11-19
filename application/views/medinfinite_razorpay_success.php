@@ -98,7 +98,7 @@ if (($success === true) || ($success == 1))
    --End QR code-Generation--*/
 
 
-         $to = "asrinivas433@somedomain.com";
+         /*$to = "asrinivas433@somedomain.com";
          $subject = "This is subject";
          
          $message = "<b>This is HTML message.</b>";
@@ -115,7 +115,7 @@ if (($success === true) || ($success == 1))
             echo "Message sent successfully...";exit;
          }else {
             echo "Message could not be sent...";exit;
-         }
+         }*/
 
            
 

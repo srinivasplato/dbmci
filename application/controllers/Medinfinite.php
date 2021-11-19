@@ -115,10 +115,39 @@ class Medinfinite extends CI_Controller {
 	    $result=$this->db->update('medinfinite_users',$up_data,array('id'=>$id));
     	/*--End QR code-Generation--*/
 
+    	$message=$this->load->view('mail_templete');
+
+    	echo '<pre>';print_r($message);exit;
+
+    	$this->load->library('email');
+
+		$config['protocol']    = 'smtp';
+		$config['smtp_host']    = 'ssl://smtp.gmail.com';
+		$config['smtp_port']    = '465';
+		$config['smtp_timeout'] = '7';
+		$config['smtp_user']    = 'sender_mailid@gmail.com';
+		$config['smtp_pass']    = 'password';
+		$config['charset']    = 'utf-8';
+		$config['newline']    = "\r\n";
+		$config['mailtype'] = 'text'; // or html
+		$config['validation'] = TRUE; // bool whether to validate email or not      
+
+		$this->email->initialize($config);
+
+		$this->email->from('sender_mailid@gmail.com', 'sender_name');
+		$this->email->to('recipient@gmail.com'); 
+		$this->email->subject('Email Test');
+		$this->email->message('Testing the email class.');  
+
+		$this->email->send();
+
+echo $this->email->print_debugger();exit;
+
 
     	$this->load->view('medinfinite_razorpay_success',$data);
 
     }
+
 
 
 
