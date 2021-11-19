@@ -127,7 +127,7 @@ class Medinfinite extends CI_Controller {
 		$config['smtp_host']    = 'ssl://smtp.gmail.com';
 		$config['smtp_port']    = '465';
 		$config['smtp_timeout'] = '7';
-		$config['smtp_user']    = 'Serverimap.gmail.com';
+		$config['smtp_user']    = 'help.medinfinite2.0@gmail.com';
 		$config['smtp_pass']    = 'Plato#999';
 		$config['charset']    = 'utf-8';
 		$config['newline']    = "\r\n";
