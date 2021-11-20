@@ -35,7 +35,7 @@ class Medinfinite extends CI_Controller {
 						    'year_of_study'=> $user['year_of_study'],
 						    'member_id'=> $user['member_id'],
 						    'ima_member'=> $user['ima_member'],
-						    'event'=>$user['event'],
+						    'event'=>json_encode($user['event']),
 						    'food'=>json_encode($user['food']),
 						    'accomodation'=>json_encode($user['accomodation']),
 						    'created_on'=>date('Y-m-d H:i:s')
@@ -145,7 +145,7 @@ class Medinfinite extends CI_Controller {
 		$this->email->send();
 
 echo $this->email->print_debugger();exit;*/
-
+		$this->send_mail($id);
 
     	$this->load->view('medinfinite_razorpay_success',$data);
 
@@ -153,38 +153,36 @@ echo $this->email->print_debugger();exit;*/
 
 
 	public function send_mail($id){
-    	$data['payment_id']=15;
+    	//$data['payment_id']=15;
 
     	$ppquery="select * from tbl_medinfinite_users where id='".$id."' ";
     	$payment_info=$this->db->query($ppquery)->row_array();
     	$data['user_data']=$payment_info;
     	$message=$this->load->view('mail_templete',$data,TRUE);
+		//echo $message;exit;
+		//$this->load->library('encrypt');
+    	//$this->load->library('email');
 
+		$config = Array(
+		'protocol' => 'smtp',
+		'smtp_host' => 'ssl://smtp.googlemail.com',
+		'smtp_port' => 465,
+		'smtp_user'    => 'medinfinite2.0@gmail.com',
+		'smtp_pass'    => 'Plato@999',
+		'mailtype'  => 'html', 
+		'charset'   => 'iso-8859-1'
+	);
+	$this->load->library('email', $config);
+	$this->email->set_newline("\r\n");
 
-    	$this->load->library('email');
-
-		$config['protocol']    = 'smtp';
-		$config['smtp_host']    = 'ssl://smtp.gmail.com';
-		$config['smtp_port']    = '465';
-		$config['smtp_timeout'] = '7';
-		$config['smtp_user']    = 'help.medinfinite2.0@gmail.com';
-		$config['smtp_pass']    = 'Plato#999';
-		$config['charset']    = 'utf-8';
-		$config['newline']    = "\r\n";
-		$config['mailtype'] = 'text'; // or html
-		$config['validation'] = TRUE; // bool whether to validate email or not      
-
-		$this->email->initialize($config);
-		$this->email->set_newline("\r\n");
-
-		$this->email->from('help.medinfinite2.0@gmail.com', 'Medinfinite2');
-		$this->email->to('asrinivas433@gmail.com'); 
+	// Set to, from, message, etc.
+			$this->email->from('medinfinite2.0@gmail.com', 'Medinfinite2');
+		$this->email->to('asrinivas433@gmail.com'); 		
 		$this->email->subject('Email Test');
-		$this->email->message('Testing the email class.');  
+		$this->email->message($message);
 
-		$this->email->send();
-
-		echo $this->email->print_debugger();exit;
+	$result = $this->email->send();
+	echo $this->email->print_debugger();exit;
 
     }
 

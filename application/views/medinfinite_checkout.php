@@ -103,7 +103,7 @@
                         <tr>
                             <td>Events </td>
                             <td>:</td>
-                            <td><b><?php echo $user_data['event'] ?></b></td>
+                            <td><b><?php echo json_decode($user_data['event'])  ?></b></td>
                         </tr>
                         <tr>
                             <td>Accodomination </td>
