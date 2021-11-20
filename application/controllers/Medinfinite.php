@@ -182,8 +182,8 @@ echo $this->email->print_debugger();exit;*/
 		$this->email->message($message);
 
 	$result = $this->email->send();
-	echo $this->email->print_debugger();exit;
-
+	//echo $this->email->print_debugger();exit;
+	return $result;
     }
 
 
